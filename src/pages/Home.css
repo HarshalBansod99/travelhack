@@ -1,12 +1,12 @@
 /* ===== HERO ===== */
 .hero {
   position: relative;
-  height: 100vh;
-  min-height: 600px;
-  max-height: 1000px;
+  min-height: 100vh;
+  min-height: 100dvh;
   display: flex;
   align-items: center;
   overflow: hidden;
+  padding: calc(var(--nav-height) + 1.5rem) 0 var(--space-3xl);
 }
 
 .hero__slides {
@@ -33,12 +33,10 @@
 .hero__overlay {
   position: absolute;
   inset: 0;
-  background: linear-gradient(
-    to bottom,
-    rgba(27, 36, 50, 0.3) 0%,
-    rgba(27, 36, 50, 0.15) 40%,
-    rgba(27, 36, 50, 0.55) 100%
-  );
+  background: linear-gradient(to bottom,
+      rgba(27, 36, 50, 0.6) 0%,
+      rgba(27, 36, 50, 0.42) 45%,
+      rgba(27, 36, 50, 0.8) 100%);
   z-index: 1;
 }
 
@@ -85,15 +83,45 @@
   flex-wrap: wrap;
 }
 
-.hero__cta-browse {
-  border-color: rgba(255, 255, 255, 0.5);
-  color: white;
+.hero__cta-browse,
+.btn--hero-browse {
+  background: rgba(255, 255, 255, 0.22) !important;
+  backdrop-filter: blur(16px) !important;
+  -webkit-backdrop-filter: blur(16px) !important;
+  border: 2px solid rgba(255, 255, 255, 0.95) !important;
+  color: #ffffff !important;
+  font-weight: 600 !important;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3) !important;
+  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.5);
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-sm);
+  text-decoration: none;
+  cursor: pointer;
 }
 
-.hero__cta-browse:hover {
-  background-color: white;
-  color: var(--teal);
-  border-color: white;
+.hero__cta-browse svg,
+.btn--hero-browse svg {
+  color: #ffffff !important;
+  stroke: #ffffff !important;
+  transition: transform var(--transition-fast);
+}
+
+.hero__cta-browse:hover,
+.btn--hero-browse:hover {
+  background-color: #ffffff !important;
+  color: var(--charcoal) !important;
+  border-color: #ffffff !important;
+  transform: translateY(-3px);
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.4) !important;
+  text-shadow: none;
+}
+
+.hero__cta-browse:hover svg,
+.btn--hero-browse:hover svg {
+  color: var(--charcoal) !important;
+  stroke: var(--charcoal) !important;
+  transform: translateX(4px);
 }
 
 .hero__indicators {
@@ -141,8 +169,15 @@
 }
 
 @keyframes bounceDown {
-  0%, 100% { transform: translateY(0); }
-  50% { transform: translateY(6px); }
+
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+
+  50% {
+    transform: translateY(6px);
+  }
 }
 
 /* ===== TRIP TYPES ===== */
@@ -435,9 +470,17 @@
   padding: 0 var(--space-lg);
 }
 
-.gallery-strip__masonry .gallery-strip__item:nth-child(1) { grid-row: span 2; }
-.gallery-strip__masonry .gallery-strip__item:nth-child(4) { grid-row: span 2; }
-.gallery-strip__masonry .gallery-strip__item:nth-child(6) { grid-column: span 2; }
+.gallery-strip__masonry .gallery-strip__item:nth-child(1) {
+  grid-row: span 2;
+}
+
+.gallery-strip__masonry .gallery-strip__item:nth-child(4) {
+  grid-row: span 2;
+}
+
+.gallery-strip__masonry .gallery-strip__item:nth-child(6) {
+  grid-column: span 2;
+}
 
 .gallery-strip__item {
   position: relative;
@@ -608,14 +651,40 @@
 }
 
 .cta-banner__btn-alt {
-  border-color: rgba(255, 255, 255, 0.4);
-  color: white;
+  background: rgba(255, 255, 255, 0.2) !important;
+  backdrop-filter: blur(16px) !important;
+  -webkit-backdrop-filter: blur(16px) !important;
+  border: 2px solid rgba(255, 255, 255, 0.95) !important;
+  color: #ffffff !important;
+  font-weight: 600 !important;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.25) !important;
+  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.4);
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-sm);
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.cta-banner__btn-alt svg {
+  color: #ffffff !important;
+  stroke: #ffffff !important;
+  transition: transform var(--transition-fast);
 }
 
 .cta-banner__btn-alt:hover {
-  background: white;
-  color: var(--teal);
-  border-color: white;
+  background: #ffffff !important;
+  color: var(--charcoal) !important;
+  border-color: #ffffff !important;
+  transform: translateY(-3px);
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.35) !important;
+  text-shadow: none;
+}
+
+.cta-banner__btn-alt:hover svg {
+  color: var(--charcoal) !important;
+  stroke: var(--charcoal) !important;
+  transform: translateX(4px);
 }
 
 /* ===== RESPONSIVE ===== */
@@ -697,6 +766,13 @@
 
   .hero__ctas {
     flex-direction: column;
-    align-items: flex-start;
+    align-items: stretch;
+    width: 100%;
+    gap: var(--space-sm);
+  }
+
+  .hero__ctas .btn {
+    width: 100%;
+    justify-content: center;
   }
 }

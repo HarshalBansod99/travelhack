@@ -48,7 +48,7 @@ export default function Packages() {
         <div className="container">
           {/* Filters */}
           <div className="packages-filters">
-            <div className="filter-group">
+            <div className="filter-group filter-group--category">
               <span className="filter-label">Travel Style:</span>
               <div className="filter-tabs">
                 {categories.map(cat => (
@@ -63,7 +63,7 @@ export default function Packages() {
               </div>
             </div>
             
-            <div className="filter-group">
+            <div className="filter-group filter-group--region">
               <span className="filter-label">Region:</span>
               <div className="filter-select-wrapper">
                 <select 

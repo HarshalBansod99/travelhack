@@ -126,7 +126,7 @@ export default function Home() {
             >
               <Phone size={20} /> Plan My Trip
             </a>
-            <Link to="/packages" className="btn btn--secondary btn--lg hero__cta-browse" id="hero-cta-browse">
+            <Link to="/packages" className="btn btn--hero-browse btn--lg hero__cta-browse" id="hero-cta-browse">
               Browse Packages <ArrowRight size={18} />
             </Link>
           </motion.div>
@@ -360,7 +360,7 @@ export default function Home() {
               >
                 <MessageCircle size={20} /> Chat on WhatsApp
               </a>
-              <Link to="/customize" className="btn btn--secondary btn--lg cta-banner__btn-alt">
+              <Link to="/customize" className="btn btn--glass btn--lg cta-banner__btn-alt" id="cta-banner-customize">
                 Build My Itinerary <ArrowRight size={18} />
               </Link>
             </div>

@@ -1,13 +1,15 @@
 .footer {
   background-color: var(--charcoal);
   color: rgba(255, 255, 255, 0.85);
+  position: relative;
 }
 
 .footer__top {
   display: grid;
-  grid-template-columns: 1.3fr 0.8fr 0.8fr 1.2fr;
-  gap: 2.5rem;
-  padding: var(--space-4xl) 0 var(--space-3xl);
+  grid-template-columns: 1.3fr 0.85fr 0.85fr 1.2fr;
+  gap: 3rem;
+  padding: 5rem 0 3.5rem;
+  width: 100%;
 }
 
 /* Brand */
@@ -127,8 +129,8 @@
 
 /* Bottom */
 .footer__bottom {
-  border-top: 1px solid rgba(255, 255, 255, 0.1);
-  padding: var(--space-lg) 0;
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+  padding: 1.5rem 0;
 }
 
 .footer__bottom-inner {
@@ -137,6 +139,7 @@
   align-items: center;
   font-size: 0.85rem;
   color: rgba(255, 255, 255, 0.45);
+  padding-right: 4rem; /* clearance from floating WhatsApp button on desktop */
 }
 
 .footer__bottom-sub {
@@ -145,11 +148,20 @@
   color: rgba(255, 255, 255, 0.35);
 }
 
-/* ---- Mobile ---- */
+/* ---- Responsive ---- */
+@media (max-width: 1024px) {
+  .footer__top {
+    grid-template-columns: 1.2fr 0.8fr 0.8fr 1.2fr;
+    gap: 2rem;
+    padding: 4rem 0 2.5rem;
+  }
+}
+
 @media (max-width: 900px) {
   .footer__top {
     grid-template-columns: 1fr 1fr;
-    gap: 2rem;
+    gap: 2.5rem;
+    padding: 3.5rem 0 2.5rem;
   }
 }
 
@@ -157,12 +169,17 @@
   .footer__top {
     grid-template-columns: 1fr;
     gap: 2rem;
-    padding: var(--space-3xl) 0 var(--space-2xl);
+    padding: 3rem 0 2rem;
+  }
+
+  .footer__bottom {
+    padding: 1.5rem 0 5.5rem; /* clearance for WhatsApp button on mobile */
   }
 
   .footer__bottom-inner {
     flex-direction: column;
     gap: 0.5rem;
     text-align: center;
+    padding-right: 0;
   }
 }
