@@ -160,11 +160,17 @@ export default function Home() {
               return (
                 <AnimatedSection key={cat.id} delay={i * 0.08}>
                   <Link to={`/packages?category=${cat.id}`} className="trip-type-card" id={`trip-type-${cat.id}`}>
-                    <span className="trip-type-card__icon">
-                      {IconComponent && <IconComponent size={32} strokeWidth={1.5} />}
-                    </span>
-                    <h3 className="trip-type-card__title">{cat.label}</h3>
-                    <p className="trip-type-card__desc">{cat.description}</p>
+                    <div className="trip-type-card__bg" style={{ backgroundImage: `url(${cat.image})` }} />
+                    <div className="trip-type-card__overlay" />
+                    <div className="trip-type-card__content">
+                      <span className="trip-type-card__icon">
+                        {IconComponent && <IconComponent size={24} strokeWidth={2} />}
+                      </span>
+                      <div className="trip-type-card__text">
+                        <h3 className="trip-type-card__title">{cat.label}</h3>
+                        <p className="trip-type-card__desc">{cat.description}</p>
+                      </div>
+                    </div>
                   </Link>
                 </AnimatedSection>
               );

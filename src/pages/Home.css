@@ -181,6 +181,11 @@
 }
 
 /* ===== TRIP TYPES ===== */
+.trip-types {
+  padding: var(--space-4xl) 0;
+  background-color: var(--bg-primary);
+}
+
 .trip-types__heading {
   margin-bottom: var(--space-2xl);
 }
@@ -192,69 +197,118 @@
 }
 
 .trip-type-card {
+  position: relative;
   display: flex;
   flex-direction: column;
-  align-items: center;
-  text-align: center;
-  padding: var(--space-2xl) var(--space-lg);
-  background: white;
-  border-radius: var(--border-radius-lg);
-  border: 1px solid transparent;
-  transition: all var(--transition-base);
-  text-decoration: none;
-  position: relative;
+  justify-content: flex-end;
+  height: 340px;
+  border-radius: 24px;
   overflow: hidden;
+  text-decoration: none;
+  transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+  transform: translateY(0);
 }
 
-.trip-type-card::before {
-  content: '';
+.trip-type-card__bg {
   position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  height: 3px;
-  background: linear-gradient(90deg, var(--terracotta), var(--marigold));
-  opacity: 0;
-  transition: opacity var(--transition-base);
+  inset: 0;
+  background-size: cover;
+  background-position: center;
+  transition: transform 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+  z-index: 1;
 }
 
-.trip-type-card:hover {
-  transform: translateY(-6px);
-  box-shadow: var(--shadow-lg);
-  border-color: var(--sand);
+.trip-type-card__overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    to bottom,
+    rgba(27, 36, 50, 0) 0%,
+    rgba(27, 36, 50, 0.4) 50%,
+    rgba(27, 36, 50, 0.9) 100%
+  );
+  z-index: 2;
+  transition: opacity 0.5s ease;
 }
 
-.trip-type-card:hover::before {
-  opacity: 1;
+.trip-type-card__content {
+  position: relative;
+  z-index: 3;
+  padding: var(--space-xl);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-md);
+  height: 100%;
+  justify-content: space-between;
 }
 
 .trip-type-card__icon {
-  display: flex;
+  display: inline-flex;
   align-items: center;
   justify-content: center;
-  width: 64px;
-  height: 64px;
-  border-radius: 16px;
-  background: linear-gradient(135deg, var(--sand), var(--cream));
-  color: var(--terracotta);
-  margin-bottom: var(--space-md);
-  transition: all var(--transition-base);
+  width: 48px;
+  height: 48px;
+  border-radius: 14px;
+  background: rgba(255, 255, 255, 0.15);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  color: #ffffff;
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  transition: all 0.4s ease;
+  align-self: flex-start;
 }
 
-.trip-type-card:hover .trip-type-card__icon {
-  background: linear-gradient(135deg, var(--terracotta), var(--marigold));
-  color: white;
-  transform: scale(1.05);
+.trip-type-card__text {
+  transform: translateY(10px);
+  transition: transform 0.4s ease;
 }
 
 .trip-type-card__title {
-  font-size: 1.15rem;
-  margin-bottom: var(--space-xs);
+  font-size: 1.4rem;
+  margin-bottom: 6px;
+  color: #ffffff;
+  font-weight: 700;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
 }
 
 .trip-type-card__desc {
-  font-size: 0.9rem;
-  color: var(--warm-gray);
+  font-size: 0.95rem;
+  color: rgba(255, 255, 255, 0.85);
+  margin: 0;
+  line-height: 1.4;
+  opacity: 0.9;
+}
+
+/* Hover Effects */
+.trip-type-card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
+}
+
+.trip-type-card:hover .trip-type-card__bg {
+  transform: scale(1.1);
+}
+
+.trip-type-card:hover .trip-type-card__overlay {
+  background: linear-gradient(
+    to bottom,
+    rgba(27, 36, 50, 0) 0%,
+    rgba(27, 36, 50, 0.2) 40%,
+    rgba(27, 36, 50, 0.85) 100%
+  );
+}
+
+.trip-type-card:hover .trip-type-card__icon {
+  background: var(--marigold);
+  color: var(--charcoal);
+  border-color: var(--marigold);
+  transform: scale(1.1) rotate(5deg);
+  box-shadow: 0 8px 20px rgba(242, 176, 53, 0.4);
+}
+
+.trip-type-card:hover .trip-type-card__text {
+  transform: translateY(0);
 }
 
 /* ===== DESTINATIONS ===== */
@@ -713,12 +767,16 @@
   }
 
   .trip-type-card {
-    padding: var(--space-lg) var(--space-md);
+    height: 300px;
+  }
+
+  .trip-type-card__content {
+    padding: var(--space-lg);
   }
 
   .trip-type-card__icon {
-    width: 52px;
-    height: 52px;
+    width: 42px;
+    height: 42px;
     border-radius: 12px;
   }
 

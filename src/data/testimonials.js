@@ -2,7 +2,7 @@ export const testimonials = [
   {
     id: 1,
     name: 'Priya Sharma',
-    city: 'Pune',
+    city: 'Nagpur',
     trip: 'Ladakh Group Tour',
     rating: 5,
     quote: 'I went solo and came back with 15 new friends. The Ladakh trip was pure magic — Pangong Lake at sunset is something photos can\'t capture. Harshal and Nikhil handled everything so smoothly, I didn\'t have to think about a single thing.',

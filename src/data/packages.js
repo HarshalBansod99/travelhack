@@ -343,12 +343,12 @@ export const packages = [
 
 export const categories = [
   { id: 'all', label: 'All Trips', icon: 'Globe' },
-  { id: 'Group', label: 'Group Tours', icon: 'Users', description: 'Travel with a crew, make new friends' },
-  { id: 'Couple', label: 'Couple Tours', icon: 'Heart', description: 'Romantic escapes for two' },
-  { id: 'College', label: 'College Trips', icon: 'GraduationCap', description: 'Epic batch trips on a budget' },
-  { id: 'Family', label: 'Family Tours', icon: 'Home', description: 'All ages, zero stress' },
-  { id: 'Honeymoon', label: 'Honeymoon', icon: 'Gem', description: 'Start forever the right way' },
-  { id: 'Customized', label: 'Customized', icon: 'Sparkles', description: 'Your trip, built from scratch' },
+  { id: 'Group', label: 'Group Tours', icon: 'Users', description: 'Travel with a crew, make new friends', image: 'https://images.unsplash.com/photo-1529156069898-49953eb1b5ce?w=800&q=80' },
+  { id: 'Couple', label: 'Couple Tours', icon: 'Heart', description: 'Romantic escapes for two', image: 'https://images.unsplash.com/photo-1520625902102-10646c2436d4?w=800&q=80' },
+  { id: 'College', label: 'College Trips', icon: 'GraduationCap', description: 'Epic batch trips on a budget', image: 'https://images.unsplash.com/photo-1523580494863-6f3031224c94?w=800&q=80' },
+  { id: 'Family', label: 'Family Tours', icon: 'Home', description: 'All ages, zero stress', image: 'https://images.unsplash.com/photo-1502086223501-7ea6ecd79368?w=800&q=80' },
+  { id: 'Honeymoon', label: 'Honeymoon', icon: 'Gem', description: 'Start forever the right way', image: 'https://images.unsplash.com/photo-1510414842594-a61c69b5ae57?w=800&q=80' },
+  { id: 'Customized', label: 'Customized', icon: 'Sparkles', description: 'Your trip, built from scratch', image: 'https://images.unsplash.com/photo-1469854523086-cc02fe5d8800?w=800&q=80' },
 ];
 
 export const regions = [
