@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { supabase } from '../lib/supabase';
 import './Customize.css';
 
 export default function Customize() {
@@ -16,9 +17,24 @@ export default function Customize() {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     
+    try {
+      // Save to Supabase
+      await supabase.from('custom_trip_requests').insert([{
+        destinations: formData.destinations,
+        duration: formData.duration,
+        travelers: formData.travelers,
+        dates: formData.dates,
+        budget: formData.budget,
+        trip_style: formData.tripStyle,
+        special_requests: formData.specialRequests
+      }]);
+    } catch (error) {
+      console.error("Error saving request to Supabase:", error);
+    }
+
     // Construct WhatsApp message
     const message = `*New Custom Trip Request*%0A%0A` +
       `*Where to:* ${formData.destinations}%0A` +

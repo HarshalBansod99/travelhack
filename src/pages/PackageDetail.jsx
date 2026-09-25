@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
 import { useParams, Link, useNavigate } from 'react-router-dom';
 import { packages } from '../data/packages';
+import { supabase } from '../lib/supabase';
 import './PackageDetail.css';
 
 export default function PackageDetail() {
@@ -26,6 +27,20 @@ export default function PackageDetail() {
 
   const whatsappMessage = encodeURIComponent(`Hi TravelHack! I'm interested in the ${pkg.title} package. Can we discuss dates and availability?`);
 
+  const handleEnquiry = async (e) => {
+    e.preventDefault();
+    try {
+      await supabase.from('package_enquiries').insert([{
+        package_id: String(pkg.id),
+        package_name: pkg.title,
+        message: decodeURIComponent(whatsappMessage)
+      }]);
+    } catch (error) {
+      console.error("Error saving package enquiry to Supabase:", error);
+    }
+    window.open(`https://wa.me/918483835171?text=${whatsappMessage}`, '_blank');
+  };
+
   return (
     <main className="package-detail">
       {/* Header / Gallery */}
@@ -47,7 +62,7 @@ export default function PackageDetail() {
           </div>
         </div>
 
-        <div className="detail-header__info container">
+        <div className="detail-header__info">
           <div className="detail-header__meta">
             <span className="badge badge--category">{pkg.category}</span>
             <span className="badge badge--region">📍 {pkg.region}</span>
@@ -62,6 +77,7 @@ export default function PackageDetail() {
           
           <a 
             href={`https://wa.me/918483835171?text=${whatsappMessage}`}
+            onClick={handleEnquiry}
             target="_blank"
             rel="noopener noreferrer"
             className="btn btn--primary btn--lg"
@@ -154,10 +170,11 @@ export default function PackageDetail() {
               <p>Skip the forms. Just message us on WhatsApp and we'll sort it out.</p>
               <a 
                 href={`https://wa.me/918483835171?text=${whatsappMessage}`}
+                onClick={handleEnquiry}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="btn btn--whatsapp"
-                style={{ width: '100%', justifyContent: 'center' }}
+                style={{ width: '100%', justifyContent: 'center', display: 'inline-flex' }}
               >
                 Message Harshal
               </a>

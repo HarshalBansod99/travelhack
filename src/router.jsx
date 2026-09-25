@@ -8,6 +8,7 @@ import About from './pages/About';
 import GalleryPage from './pages/GalleryPage';
 import Contact from './pages/Contact';
 import NotFound from './pages/NotFound';
+import Admin from './pages/Admin';
 
 export const router = createBrowserRouter([
   {
@@ -48,4 +49,8 @@ export const router = createBrowserRouter([
       },
     ],
   },
+  {
+    path: '/admin',
+    element: <Admin />
+  }
 ]);

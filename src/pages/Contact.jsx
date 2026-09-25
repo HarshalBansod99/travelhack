@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import { founders } from '../data/founders';
+import { supabase } from '../lib/supabase';
 import './Contact.css';
 
 export default function Contact() {
@@ -14,8 +15,21 @@ export default function Contact() {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
+
+    try {
+      // Save to Supabase
+      await supabase.from('contact_messages').insert([{
+        name: formData.name,
+        phone: formData.phone,
+        email: formData.email,
+        message: formData.message
+      }]);
+    } catch (error) {
+      console.error("Error saving contact message to Supabase:", error);
+    }
+
     const text = `*New Contact Request*%0A%0A*Name:* ${formData.name}%0A*Phone:* ${formData.phone}%0A*Email:* ${formData.email}%0A*Message:* ${formData.message}`;
     window.open(`https://wa.me/918483835171?text=${text}`, '_blank');
   };
