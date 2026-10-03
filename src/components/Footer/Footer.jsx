@@ -44,13 +44,13 @@ export default function Footer() {
           </div>
 
           <div className="footer__links-group">
-            <h4 className="footer__links-title">Popular Trips</h4>
+            <h4 className="footer__links-title">Current Trip</h4>
             <ul className="footer__links-list">
-              <li><Link to="/packages/ladakh-group-adventure">Ladakh Adventure</Link></li>
-              <li><Link to="/packages/kerala-honeymoon-bliss">Kerala Honeymoon</Link></li>
-              <li><Link to="/packages/rajasthan-royal-family-tour">Rajasthan Family</Link></li>
-              <li><Link to="/packages/goa-college-trip">Goa College Trip</Link></li>
-              <li><Link to="/packages/rishikesh-weekend-adventure">Rishikesh Weekend</Link></li>
+              <li><Link to="/packages/manali-solang-atal-tunnel-kasol-manikaran">Manali – Solang, Kasol, Manikaran</Link></li>
+              <li><a href="/#itinerary">Day-wise Itinerary</a></li>
+              <li><a href="/#pricing">Pricing</a></li>
+              <li><a href="/#inclusions">Inclusions & Exclusions</a></li>
+              <li><a href="/#testimonials">Testimonials</a></li>
             </ul>
           </div>
 

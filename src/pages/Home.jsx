@@ -2,28 +2,32 @@ import { useState, useEffect, useRef } from 'react';
 import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import {
-  Phone, MessageCircle, Star, Compass, ArrowDown,
-  Users, Heart, GraduationCap, Home as HomeIcon, Gem, Sparkles, Globe,
-  ArrowRight
+  Phone, MessageCircle, Star, ArrowDown,
+  ArrowRight, MapPin, Calendar, Clock, CheckCircle, XCircle, Users, Mountain, Sun, Snowflake, Tent, Music
 } from '../components/Icons';
-import { destinations } from '../data/destinations';
 import { testimonials } from '../data/testimonials';
-import { categories } from '../data/packages';
-import { founders } from '../data/founders';
+import { packages } from '../data/packages';
 import { galleryImages } from '../data/gallery';
+
 import './Home.css';
 
+const manaliPkg = packages[0];
+
 const heroSlides = [
-  { image: 'https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=1600&q=80', alt: 'Snow-capped mountains at golden hour' },
-  { image: 'https://images.unsplash.com/photo-1512343879784-a960bf40e7f2?w=1600&q=80', alt: 'Tropical beach sunset' },
-  { image: 'https://images.unsplash.com/photo-1599661046289-e31897846e41?w=1600&q=80', alt: 'Hawa Mahal, Rajasthan' },
-  { image: 'https://images.unsplash.com/photo-1602216056096-3b40cc0c9944?w=1600&q=80', alt: 'Kerala backwaters' },
+  { image: 'https://images.unsplash.com/photo-1585409677983-0f6c41ca9c3b?w=1600&q=80', alt: 'Manali valley with snow-capped mountains' },
+  { image: 'https://images.unsplash.com/photo-1626621341517-bbf3d9990a23?w=1600&q=80', alt: 'Solang Valley snow activities' },
+  { image: 'https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?w=1600&q=80', alt: 'Kasol mountain peaks' },
+  { image: 'https://images.unsplash.com/photo-1486870591958-9b9d0d1dda99?w=1600&q=80', alt: 'Manikaran golden hour mountains' },
 ];
 
-// Map icon names from data to Lucide components
-const iconMap = {
-  Globe, Users, Heart, GraduationCap, Home: HomeIcon, Gem, Sparkles,
-};
+const experienceHighlights = [
+  { icon: '🏔️', title: 'Solang Valley', desc: 'Snow activities & Atal Tunnel' },
+  { icon: '🛕', title: 'Hadimba Temple', desc: 'Ancient temple in deodar forest' },
+  { icon: '🏕️', title: 'Kasol Camping', desc: 'Riverside camps with bonfire' },
+  { icon: '🎶', title: 'DJ Night', desc: 'Music under the mountain stars' },
+  { icon: '🌊', title: 'River Rafting', desc: 'Adventure at Kullu rapids' },
+  { icon: '♨️', title: 'Manikaran Springs', desc: 'Sacred hot water spring' },
+];
 
 function useInView(options = {}) {
   const ref = useRef(null);
@@ -60,6 +64,7 @@ function AnimatedSection({ children, className = '', delay = 0 }) {
 
 export default function Home() {
   const [currentSlide, setCurrentSlide] = useState(0);
+  const [activeDay, setActiveDay] = useState(1);
 
   useEffect(() => {
     const timer = setInterval(() => {
@@ -67,6 +72,8 @@ export default function Home() {
     }, 5500);
     return () => clearInterval(timer);
   }, []);
+
+  const whatsappMessage = encodeURIComponent('Hi TravelHack! I\'m interested in the Manali – Solang, Atal Tunnel, Kasol, Manikaran trip. Can we discuss dates and availability?');
 
   return (
     <main className="home">
@@ -85,50 +92,62 @@ export default function Home() {
         </div>
         <div className="hero__overlay" />
         <div className="hero__content container">
-          <motion.span
-            className="hero__label"
+          <motion.div
+            className="hero__badge-row"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.3, duration: 0.6 }}
+            transition={{ delay: 0.2, duration: 0.6 }}
           >
-            curated tours across India
-          </motion.span>
+            <span className="hero__trip-badge">🏔️ Nagpur → Delhi → Manali → Kasol → Nagpur</span>
+          </motion.div>
           <motion.h1
             className="hero__title"
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.5, duration: 0.7 }}
+            transition={{ delay: 0.4, duration: 0.7 }}
           >
-            We've road-tripped India more times than we can count.
+            Manali – Solang, Atal Tunnel,
             <br />
-            <em>Let us plan yours.</em>
+            <em>Kasol & Manikaran</em>
           </motion.h1>
           <motion.p
             className="hero__subtitle"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.8, duration: 0.6 }}
+            transition={{ delay: 0.7, duration: 0.6 }}
           >
-            Group trips, couple getaways, family vacations, college tours, honeymoons — or something completely custom. From Ladakh to Kerala, we've got the routes, the guides, and the chai stops.
+            Snow-capped peaks, ancient temples, riverside camping, and mountain adventures. 
+            7 days from Nagpur — starting at just ₹8,999/person.
           </motion.p>
+          <motion.div
+            className="hero__quick-info"
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.9, duration: 0.6 }}
+          >
+            <div className="hero__info-chip"><Calendar size={16} /> 6D/5N</div>
+            <div className="hero__info-chip"><MapPin size={16} /> From Nagpur</div>
+            <div className="hero__info-chip"><Users size={16} /> Group Tour</div>
+            <div className="hero__info-chip hero__info-chip--price">₹8,999/person</div>
+          </motion.div>
           <motion.div
             className="hero__ctas"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 1.0, duration: 0.6 }}
+            transition={{ delay: 1.1, duration: 0.6 }}
           >
             <a
-              href="https://wa.me/918483835171?text=Hi%20TravelHack!%20I%27d%20like%20to%20plan%20a%20trip%20🏔️"
+              href={`https://wa.me/918483835171?text=${whatsappMessage}`}
               className="btn btn--warm btn--lg"
               target="_blank"
               rel="noopener noreferrer"
-              id="hero-cta-plan"
+              id="hero-cta-book"
             >
-              <Phone size={20} /> Plan My Trip
+              <Phone size={20} /> Book This Trip
             </a>
-            <Link to="/packages" className="btn btn--hero-browse btn--lg hero__cta-browse" id="hero-cta-browse">
-              Browse Packages <ArrowRight size={18} />
-            </Link>
+            <a href="#itinerary" className="btn btn--hero-browse btn--lg hero__cta-browse" id="hero-cta-itinerary">
+              View Itinerary <ArrowDown size={18} />
+            </a>
           </motion.div>
           <div className="hero__indicators">
             {heroSlides.map((_, i) => (
@@ -147,103 +166,151 @@ export default function Home() {
         </div>
       </section>
 
-      {/* ===== TRIP TYPE SELECTOR ===== */}
-      <section className="section trip-types" id="trip-types">
+      {/* ===== EXPERIENCE HIGHLIGHTS ===== */}
+      <section className="section experience-highlights" id="highlights">
         <div className="container">
           <AnimatedSection>
-            <span className="section-label">what kind of trip?</span>
-            <h2 className="trip-types__heading">Pick Your Travel Style</h2>
+            <span className="section-label">what awaits you</span>
+            <h2>6 Unforgettable Experiences</h2>
+            <p className="experience-highlights__subtitle">From snow-covered valleys to sacred hot springs — each day brings something extraordinary.</p>
           </AnimatedSection>
-          <div className="trip-types__grid">
-            {categories.filter(c => c.id !== 'all').map((cat, i) => {
-              const IconComponent = iconMap[cat.icon];
-              return (
-                <AnimatedSection key={cat.id} delay={i * 0.08}>
-                  <Link to={`/packages?category=${cat.id}`} className="trip-type-card" id={`trip-type-${cat.id}`}>
-                    <div className="trip-type-card__bg" style={{ backgroundImage: `url(${cat.image})` }} />
-                    <div className="trip-type-card__overlay" />
-                    <div className="trip-type-card__content">
-                      <span className="trip-type-card__icon">
-                        {IconComponent && <IconComponent size={24} strokeWidth={2} />}
-                      </span>
-                      <div className="trip-type-card__text">
-                        <h3 className="trip-type-card__title">{cat.label}</h3>
-                        <p className="trip-type-card__desc">{cat.description}</p>
-                      </div>
-                    </div>
-                  </Link>
-                </AnimatedSection>
-              );
-            })}
-          </div>
-        </div>
-      </section>
-
-      {/* ===== FEATURED DESTINATIONS ===== */}
-      <section className="section section--sand destinations" id="destinations">
-        <div className="container">
-          <AnimatedSection>
-            <span className="section-label">where next?</span>
-            <h2>Popular Destinations</h2>
-            <p className="destinations__subtitle">From snow-capped passes to palm-fringed backwaters — here's where India calls the loudest.</p>
-          </AnimatedSection>
-          <div className="destinations__grid">
-            {destinations.map((dest, i) => (
-              <AnimatedSection key={dest.id} delay={i * 0.06}>
-                <Link to={`/packages?region=${dest.region}`} className="dest-card" id={`dest-${dest.id}`}>
-                  <div className="dest-card__img-wrap">
-                    <img src={dest.image} alt={dest.name} loading="lazy" />
-                    <div className="dest-card__badge">{dest.days} days</div>
-                  </div>
-                  <div className="dest-card__info">
-                    <h3>{dest.name}</h3>
-                    <p className="dest-card__tagline">{dest.tagline}</p>
-                    <span className="dest-card__price">From ₹{dest.startingPrice.toLocaleString('en-IN')}</span>
-                  </div>
-                </Link>
+          <div className="experience-highlights__grid">
+            {experienceHighlights.map((item, i) => (
+              <AnimatedSection key={i} delay={i * 0.08}>
+                <div className="exp-card" id={`exp-card-${i}`}>
+                  <div className="exp-card__icon">{item.icon}</div>
+                  <h3 className="exp-card__title">{item.title}</h3>
+                  <p className="exp-card__desc">{item.desc}</p>
+                </div>
               </AnimatedSection>
             ))}
           </div>
         </div>
       </section>
 
-      {/* ===== WHY TRAVELHACK ===== */}
-      <section className="section why-us" id="why-us">
+      {/* ===== DAY-WISE ITINERARY ===== */}
+      <section className="section section--sand itinerary-section" id="itinerary">
         <div className="container">
           <AnimatedSection>
-            <span className="section-label">why us?</span>
-            <h2>Why People Travel With Us</h2>
+            <span className="section-label">the journey</span>
+            <h2>Day-wise Itinerary</h2>
+            <p className="itinerary-section__note">
+              <strong>Note:</strong> The cover page states "6D/5N". However, the detailed itinerary spans Day 1 through Day 7 (7 calendar days from Nagpur departure to Nagpur return).
+            </p>
           </AnimatedSection>
-          <div className="why-us__grid">
+          <div className="itinerary-timeline">
+            {manaliPkg.itinerary.map((day, i) => (
+              <AnimatedSection key={day.day} delay={i * 0.06}>
+                <div
+                  className={`timeline-item ${activeDay === day.day ? 'timeline-item--active' : ''}`}
+                  id={`itinerary-day-${day.day}`}
+                >
+                  <button
+                    className="timeline-item__header"
+                    onClick={() => setActiveDay(activeDay === day.day ? null : day.day)}
+                  >
+                    <div className="timeline-item__day-badge">Day {day.day}</div>
+                    <h3 className="timeline-item__title">{day.title}</h3>
+                    <span className="timeline-item__toggle">{activeDay === day.day ? '−' : '+'}</span>
+                  </button>
+                  <div className={`timeline-item__content ${activeDay === day.day ? 'timeline-item__content--open' : ''}`}>
+                    <p>{day.description}</p>
+                  </div>
+                </div>
+              </AnimatedSection>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* ===== PRICING ===== */}
+      <section className="section pricing-section" id="pricing">
+        <div className="container">
+          <AnimatedSection>
+            <span className="section-label">transparent pricing</span>
+            <h2>Choose Your Room Sharing</h2>
+            <p className="pricing-section__subtitle">All prices are per person. No hidden charges, no surprise surcharges.</p>
+          </AnimatedSection>
+          <div className="pricing-cards">
+            {manaliPkg.pricing.map((tier, i) => (
+              <AnimatedSection key={i} delay={i * 0.1}>
+                <div className={`price-card ${i === 0 ? 'price-card--popular' : ''}`} id={`price-card-${i}`}>
+                  {i === 0 && <div className="price-card__badge">Best Value</div>}
+                  <h3 className="price-card__type">{tier.type}</h3>
+                  <div className="price-card__amount">{tier.price.split('/')[0]}</div>
+                  <span className="price-card__per">per person</span>
+                  <ul className="price-card__features">
+                    <li>2 nights Manali 3-star hotel</li>
+                    <li>1 night Kasol camp</li>
+                    <li>6 meals included</li>
+                    <li>Trip captain (Delhi to Delhi)</li>
+                    <li>Camping + DJ night + bonfire</li>
+                    <li>24×7 assistance</li>
+                  </ul>
+                  <a
+                    href={`https://wa.me/918483835171?text=${encodeURIComponent(`Hi TravelHack! I want to book the Manali trip with ${tier.type}. Let's discuss!`)}`}
+                    className="btn btn--primary"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    <MessageCircle size={16} /> Book Now
+                  </a>
+                </div>
+              </AnimatedSection>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* ===== INCLUSIONS & EXCLUSIONS ===== */}
+      <section className="section section--sand inc-exc-section" id="inclusions">
+        <div className="container">
+          <AnimatedSection>
+            <span className="section-label">what's covered</span>
+            <h2>Inclusions & Exclusions</h2>
+          </AnimatedSection>
+          <div className="inc-exc-grid">
             <AnimatedSection delay={0}>
-              <div className="why-card">
-                <div className="why-card__number">01</div>
-                <h3>We've Actually Been There</h3>
-                <p>Every trip we sell, we've done ourselves first. We know which guesthouse has the best view in Kaza, which beach in Goa is actually quiet, and where to find the best momos in Leh. No copy-pasting from other travel sites.</p>
+              <div className="inc-exc-card inc-exc-card--inc">
+                <h3><CheckCircle size={22} /> What's Included</h3>
+                <ul>
+                  {manaliPkg.inclusions.map((item, i) => (
+                    <li key={i}><span className="inc-icon">✓</span> {item}</li>
+                  ))}
+                </ul>
               </div>
             </AnimatedSection>
             <AnimatedSection delay={0.1}>
-              <div className="why-card">
-                <div className="why-card__number">02</div>
-                <h3>Your Trip, Not a Template</h3>
-                <p>Hate crowded tourist spots? Want to spend an extra day at a waterfall? Traveling with grandparents who need a slower pace? We customize everything — dates, budget, pace, activities. No rigid "Day 1, Day 2" that everyone gets.</p>
-              </div>
-            </AnimatedSection>
-            <AnimatedSection delay={0.2}>
-              <div className="why-card">
-                <div className="why-card__number">03</div>
-                <h3>Transparent Pricing, Always</h3>
-                <p>We quote you a price, and that's the price. No "convenience fees" at checkout, no surprise surcharges, no "oh, the hotel upgrade is actually mandatory." If something's extra, we say so upfront.</p>
-              </div>
-            </AnimatedSection>
-            <AnimatedSection delay={0.3}>
-              <div className="why-card">
-                <div className="why-card__number">04</div>
-                <h3>Call Us, Literally Anytime</h3>
-                <p>Both founders' personal numbers are on this website. We don't hide behind a ticketing system. If something goes wrong at 11 PM during your trip, you're calling the same guys who planned it — not a random customer care bot.</p>
+              <div className="inc-exc-card inc-exc-card--exc">
+                <h3><XCircle size={22} /> What's Not Included</h3>
+                <ul>
+                  {manaliPkg.exclusions.map((item, i) => (
+                    <li key={i}><span className="exc-icon">✕</span> {item}</li>
+                  ))}
+                </ul>
               </div>
             </AnimatedSection>
           </div>
+        </div>
+      </section>
+
+      {/* ===== GALLERY ===== */}
+      <section className="section gallery-strip" id="gallery-strip">
+        <div className="container">
+          <AnimatedSection>
+            <span className="section-label">glimpses from manali</span>
+            <h2>What Awaits You</h2>
+          </AnimatedSection>
+        </div>
+        <div className="gallery-strip__masonry">
+          {galleryImages.slice(0, 8).map((img, i) => (
+            <div className="gallery-strip__item" key={img.id} style={{ animationDelay: `${i * 0.1}s` }}>
+              <img src={img.src} alt={img.alt} loading="lazy" />
+              <div className="gallery-strip__item-overlay">
+                <span>{img.tag}</span>
+              </div>
+            </div>
+          ))}
         </div>
       </section>
 
@@ -251,8 +318,8 @@ export default function Home() {
       <section className="section section--sand testimonials-section" id="testimonials">
         <div className="container">
           <AnimatedSection>
-            <span className="section-label">real stories</span>
-            <h2>What Travelers Say</h2>
+            <span className="section-label">real stories from manali</span>
+            <h2>What Our Travelers Say</h2>
           </AnimatedSection>
           <div className="testimonials__scroll">
             {testimonials.map((t, i) => (
@@ -284,91 +351,59 @@ export default function Home() {
         </div>
       </section>
 
-      {/* ===== GALLERY STRIP ===== */}
-      <section className="section gallery-strip" id="gallery-strip">
+      {/* ===== TERMS & CONDITIONS ===== */}
+      <section className="section terms-section" id="terms">
         <div className="container">
           <AnimatedSection>
-            <span className="section-label">from the road</span>
-            <h2>Moments From Our Trips</h2>
+            <span className="section-label">good to know</span>
+            <h2>Terms & Conditions</h2>
           </AnimatedSection>
-        </div>
-        <div className="gallery-strip__masonry">
-          {galleryImages.slice(0, 8).map((img, i) => (
-            <div className="gallery-strip__item" key={img.id} style={{ animationDelay: `${i * 0.1}s` }}>
-              <img src={img.src} alt={img.alt} loading="lazy" />
-              <div className="gallery-strip__item-overlay">
-                <span>{img.tag}</span>
+          <AnimatedSection delay={0.1}>
+            <div className="terms-card">
+              <ul className="terms-list">
+                {manaliPkg.termsAndConditions.map((term, i) => (
+                  <li key={i}>{term}</li>
+                ))}
+              </ul>
+              <div className="terms-note">
+                <strong>⚠️ Important:</strong> {manaliPkg.importantNote}
               </div>
             </div>
-          ))}
-        </div>
-        <div className="container" style={{ textAlign: 'center', marginTop: '2rem' }}>
-          <Link to="/gallery" className="btn btn--secondary">View Full Gallery <ArrowRight size={16} /></Link>
-        </div>
-      </section>
-
-      {/* ===== FOUNDERS PREVIEW ===== */}
-      <section className="section section--sand founders-preview" id="founders-preview">
-        <div className="container">
-          <AnimatedSection>
-            <span className="section-label">the humans behind this</span>
-            <h2>Meet the Founders</h2>
-            <p className="founders-preview__intro">TravelHack isn't a faceless company — it's two guys who love India and want you to see it the way they have. Road-tested, chai-fueled, and personally invested in every trip.</p>
           </AnimatedSection>
-          <div className="founders-preview__cards">
-            {founders.map((f, i) => (
-              <AnimatedSection key={f.id} delay={i * 0.15}>
-                <div className="founder-preview-card">
-                  <div className="founder-preview-card__avatar">
-                    <span>{f.name.split(' ').map(n => n[0]).join('')}</span>
-                  </div>
-                  <h3>{f.name}</h3>
-                  <span className="founder-preview-card__role">{f.role}</span>
-                  <p className="founder-preview-card__bio">{f.bio}</p>
-                  <div className="founder-preview-card__links">
-                    <a href={`tel:${f.phone}`} className="btn btn--sm btn--secondary">
-                      <Phone size={14} /> Call
-                    </a>
-                    <a
-                      href={`${f.whatsapp}?text=Hi%20${f.name.split(' ')[0]}!%20I%20want%20to%20plan%20a%20trip%20with%20TravelHack.`}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="btn btn--sm btn--whatsapp"
-                    >
-                      <MessageCircle size={14} /> WhatsApp
-                    </a>
-                  </div>
-                </div>
-              </AnimatedSection>
-            ))}
-          </div>
-          <div style={{ textAlign: 'center', marginTop: '2rem' }}>
-            <Link to="/about" className="btn btn--secondary">Read Our Story <ArrowRight size={16} /></Link>
-          </div>
         </div>
       </section>
 
       {/* ===== CTA BANNER ===== */}
       <section className="cta-banner" id="cta-banner">
-        <div className="cta-banner__bg" style={{ backgroundImage: `url(https://images.unsplash.com/photo-1469854523086-cc02fe5d8800?w=1600&q=80)` }} />
+        <div className="cta-banner__bg" style={{ backgroundImage: `url('/images/Atal Tunnel/SUR_0096.JPG')` }} />
         <div className="cta-banner__overlay" />
         <div className="cta-banner__content container">
           <AnimatedSection>
-            <span className="cta-banner__label">ready?</span>
-            <h2>Have a destination in mind?</h2>
-            <p>Tell us where you want to go, and we'll build you an itinerary you'll actually be excited about.</p>
+            <span className="cta-banner__label">ready for manali?</span>
+            <h2>Book Your Manali Adventure Now</h2>
+            <p>Starting at just ₹8,999/person. Message us on WhatsApp — no forms, no waiting.</p>
+            <div className="cta-banner__contact-numbers">
+              <a href="tel:+918483835171" className="cta-banner__phone">📞 8483835171</a>
+              <a href="tel:+917798664788" className="cta-banner__phone">📞 7798664788</a>
+              <a href="tel:+919359918573" className="cta-banner__phone">📞 9359918573</a>
+            </div>
             <div className="cta-banner__buttons">
               <a
-                href="https://wa.me/918483835171?text=Hi%20TravelHack!%20I%20have%20a%20trip%20idea%20and%20want%20to%20discuss%20it."
+                href={`https://wa.me/918483835171?text=${whatsappMessage}`}
                 className="btn btn--warm btn--lg"
                 target="_blank"
                 rel="noopener noreferrer"
               >
-                <MessageCircle size={20} /> Chat on WhatsApp
+                <MessageCircle size={20} /> Book on WhatsApp
               </a>
-              <Link to="/customize" className="btn btn--glass btn--lg cta-banner__btn-alt" id="cta-banner-customize">
-                Build My Itinerary <ArrowRight size={18} />
-              </Link>
+              <a
+                href="https://instagram.com/travelhack4"
+                className="btn btn--glass btn--lg cta-banner__btn-alt"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                Follow @travelhack4 <ArrowRight size={18} />
+              </a>
             </div>
           </AnimatedSection>
         </div>

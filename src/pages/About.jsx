@@ -35,8 +35,8 @@ export default function About() {
             </p>
           </div>
           <div className="about-story__images">
-            <img src="https://images.unsplash.com/photo-1524492412937-b28074a5d7da?w=600&q=80" alt="Travel group photo" className="about-img-1" />
-            <img src="https://images.unsplash.com/photo-1441974231531-c6227db76b6e?w=600&q=80" alt="Mountain road" className="about-img-2" />
+            <img src="/images/Atal Tunnel/SUR_0252.JPG" alt="Travel group photo" className="about-img-1" />
+            <img src="/images/Hidimba Temple/SUR_0482.JPG" alt="Mountain road" className="about-img-2" />
           </div>
         </div>
       </section>
