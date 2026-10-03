@@ -44,7 +44,7 @@ export default function GalleryPage() {
                 style={{ animationDelay: `${(i % 10) * 0.05}s` }}
                 onClick={() => setLightboxImg(img)}
               >
-                <img src={img.src} alt={img.alt} loading="lazy" />
+                <img src={img.src} alt={img.alt} loading="lazy" className="gallery-img" />
                 <div className="gallery-item-overlay">
                   <span>{img.alt}</span>
                 </div>

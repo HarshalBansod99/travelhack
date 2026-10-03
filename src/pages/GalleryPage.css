@@ -4,12 +4,13 @@
   min-height: 100vh;
 }
 
-.gallery-header {
+.gallery-hero {
+  background-color: var(--sand);
+  padding: var(--space-4xl) 0 var(--space-2xl);
   text-align: center;
-  padding: var(--space-3xl) 0 var(--space-xl);
 }
 
-.gallery-header p {
+.gallery-hero p {
   color: var(--warm-gray);
   font-size: 1.1rem;
   margin-top: var(--space-sm);
@@ -72,7 +73,7 @@
   transform: scale(1.08);
 }
 
-.gallery-overlay {
+.gallery-item-overlay {
   position: absolute;
   inset: 0;
   background: linear-gradient(to top, rgba(0,0,0,0.7) 0%, rgba(0,0,0,0) 50%);
@@ -84,11 +85,11 @@
   transition: opacity 0.3s ease;
 }
 
-.gallery-item:hover .gallery-overlay {
+.gallery-item:hover .gallery-item-overlay {
   opacity: 1;
 }
 
-.gallery-overlay h3 {
+.gallery-item-overlay h3 {
   color: white;
   font-size: 1.2rem;
   margin-bottom: 4px;
@@ -96,15 +97,15 @@
   transition: transform 0.3s ease;
 }
 
-.gallery-overlay span {
+.gallery-item-overlay span {
   color: rgba(255,255,255,0.8);
   font-size: 0.9rem;
   transform: translateY(10px);
   transition: transform 0.3s ease 0.05s;
 }
 
-.gallery-item:hover .gallery-overlay h3,
-.gallery-item:hover .gallery-overlay span {
+.gallery-item:hover .gallery-item-overlay h3,
+.gallery-item:hover .gallery-item-overlay span {
   transform: translateY(0);
 }
 
@@ -221,11 +222,11 @@
     gap: var(--space-md);
   }
   
-  .gallery-overlay h3 {
+  .gallery-item-overlay h3 {
     font-size: 1rem;
   }
   
-  .gallery-overlay span {
+  .gallery-item-overlay span {
     font-size: 0.8rem;
   }
   

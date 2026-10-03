@@ -10,7 +10,7 @@ export const testimonials = [
   },
   {
     id: 2,
-    name: 'Rohan & Ananya',
+    name: 'MD Rishad & Barkha',
     city: 'Mumbai',
     trip: 'Kerala Honeymoon',
     rating: 5,
