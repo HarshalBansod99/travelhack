@@ -53,7 +53,6 @@ export default function About() {
             {founders.map(f => (
               <div className="founder-card" key={f.id}>
                 <div className="founder-card__img">
-                  {/* Real photos would go here. Using a styled placeholder for now. */}
                   <div className="founder-placeholder">
                     <span>{f.name.split(' ').map(n => n[0]).join('')}</span>
                   </div>

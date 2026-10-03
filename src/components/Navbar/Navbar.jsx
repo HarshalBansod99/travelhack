@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
-import { Compass, Phone } from '../Icons';
+import { Phone } from '../Icons';
 import './Navbar.css';
 
 export default function Navbar() {
@@ -34,8 +34,11 @@ export default function Navbar() {
     <nav className={navClass} id="main-nav">
       <div className="navbar__inner container">
         <Link to="/" className="navbar__logo" id="nav-logo">
-          <span className="navbar__logo-icon"><Compass size={20} /></span>
-          <span className="navbar__logo-text">TravelHack</span>
+          <img
+            src="/logo-travelhack.jpg"
+            alt="TravelHack"
+            className="navbar__logo-img"
+          />
         </Link>
 
         <ul className={`navbar__links ${menuOpen ? 'navbar__links--open' : ''}`} id="nav-links">

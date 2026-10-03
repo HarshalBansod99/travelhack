@@ -75,13 +75,6 @@ export default function Contact() {
               <p>While we're mostly on the road (or on WhatsApp), our official base is in Maharashtra.</p>
               <p><strong>Email:</strong> hello@travelhack.in</p>
               
-              {/* Map Placeholder */}
-              <div className="map-embed">
-                <div className="map-placeholder">
-                  📍 Map Embed Area<br/>
-                  <span>(Configure with actual Google Maps iframe when address is final)</span>
-                </div>
-              </div>
             </div>
           </div>
 

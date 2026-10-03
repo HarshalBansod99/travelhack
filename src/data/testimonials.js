@@ -19,7 +19,7 @@ export const testimonials = [
   },
   {
     id: 3,
-    name: 'Vikram Deshmukh',
+    name: 'Abhishek Pradhan',
     city: 'Nagpur',
     trip: 'Rajasthan Family Tour',
     rating: 5,

@@ -38,18 +38,18 @@
 .founder-contact-card {
   display: flex;
   gap: var(--space-lg);
-  background: white;
+  background: var(--card-bg);
   padding: var(--space-lg);
   border-radius: var(--border-radius-lg);
   box-shadow: var(--shadow-sm);
-  border: 1px solid var(--light-gray);
+  border: 1px solid var(--card-border);
 }
 
 .fcc-avatar {
   width: 70px;
   height: 70px;
   border-radius: 50%;
-  background: linear-gradient(135deg, var(--teal), var(--indigo));
+  background: linear-gradient(135deg, var(--forest-green-light), var(--forest-green));
   color: white;
   display: flex;
   align-items: center;
@@ -66,7 +66,7 @@
 }
 
 .fcc-details span {
-  color: var(--terracotta);
+  color: var(--orange-accent);
   font-size: 0.85rem;
   font-weight: 500;
   display: block;
@@ -87,7 +87,7 @@
 }
 
 .fcc-link:hover {
-  color: var(--terracotta);
+  color: var(--orange-accent);
 }
 
 .fcc-link--wa:hover {
@@ -131,7 +131,8 @@
 
 /* Form Side */
 .form-card {
-  background: white;
+  background: var(--card-bg);
+  border: 1px solid var(--card-border);
   padding: var(--space-3xl);
   border-radius: var(--border-radius-xl);
   box-shadow: var(--shadow-lg);
@@ -167,15 +168,16 @@
   border: 1px solid var(--light-gray);
   border-radius: 8px;
   background-color: var(--cream);
+  color: var(--text-primary);
   transition: all var(--transition-fast);
 }
 
 .contact-form input:focus,
 .contact-form textarea:focus {
   outline: none;
-  border-color: var(--terracotta);
+  border-color: var(--orange-accent);
   background-color: white;
-  box-shadow: 0 0 0 3px rgba(199, 91, 57, 0.1);
+  box-shadow: 0 0 0 3px rgba(212, 118, 78, 0.1);
 }
 
 .contact-submit {

@@ -1,11 +1,18 @@
+<<<<<<< Updated upstream
 /* =============================================
    PackageDetail — Polished Layout & Alignment
    ============================================= */
 
 .package-detail {
+=======
+.package-detail-page {
+>>>>>>> Stashed changes
   padding-top: var(--nav-height);
+  background-color: var(--cream);
+  min-height: 100vh;
 }
 
+<<<<<<< Updated upstream
 /* ---- Hero Header & Gallery ---- */
 .detail-header {
   background-color: var(--charcoal);
@@ -57,23 +64,44 @@
   transition: all 0.2s ease;
   opacity: 0.7;
   flex-shrink: 0;
+=======
+/* Hero Section */
+.detail-hero {
+  position: relative;
+  height: 55vh;
+  min-height: 400px;
+  display: flex;
+  align-items: flex-end;
+  padding-bottom: var(--space-3xl);
 }
 
-.detail-header__thumb:hover {
-  opacity: 1;
+.detail-hero__bg {
+  position: absolute;
+  inset: 0;
+  background-size: cover;
+  background-position: center;
 }
 
-.detail-header__thumb.active {
-  border-color: white;
-  opacity: 1;
+.detail-hero__overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    to bottom,
+    rgba(0, 0, 0, 0.2) 0%,
+    rgba(0, 0, 0, 0.4) 40%,
+    rgba(0, 0, 0, 0.8) 100%
+  );
+>>>>>>> Stashed changes
 }
 
-.detail-header__thumb img {
+.detail-hero__content {
+  position: relative;
+  z-index: 2;
+  color: white;
   width: 100%;
-  height: 100%;
-  object-fit: cover;
 }
 
+<<<<<<< Updated upstream
 /* ---- Hero info block ---- */
 .detail-header__info {
   padding: var(--space-3xl) var(--space-lg) var(--space-2xl);
@@ -96,14 +124,59 @@
   font-size: 0.85rem;
   font-weight: 600;
   line-height: 1.4;
+=======
+.detail-hero__badge {
+  display: inline-block;
+  background-color: var(--orange-accent);
+  color: white;
+  padding: 6px 14px;
+  border-radius: 20px;
+  font-size: 0.85rem;
+  font-weight: 600;
+  margin-bottom: var(--space-md);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+>>>>>>> Stashed changes
 }
 
-.badge--category { background: var(--terracotta); color: white; }
-.badge--region { background: rgba(255,255,255,0.15); color: white; }
-
-.detail-header__info h1 {
+.detail-hero h1 {
   color: white;
+<<<<<<< Updated upstream
   margin-bottom: var(--space-md);
+=======
+  font-size: clamp(2rem, 4vw, 3.5rem);
+  margin-bottom: var(--space-sm);
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+.detail-hero__location {
+  font-size: 1.2rem;
+  color: rgba(255, 255, 255, 0.9);
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+/* Main Layout */
+.detail-layout {
+  display: grid;
+  grid-template-columns: 1fr 340px;
+  gap: var(--space-3xl);
+  align-items: start;
+}
+
+/* Main Content Area */
+.detail-main {
+  min-width: 0;
+}
+
+/* Header/Quick Stats */
+.detail-header {
+  text-align: center;
+  padding-bottom: var(--space-2xl);
+  border-bottom: 1px solid var(--light-gray);
+  margin-bottom: var(--space-2xl);
+>>>>>>> Stashed changes
 }
 
 .detail-header__quick-stats {
@@ -113,6 +186,7 @@
   gap: var(--space-lg) var(--space-xl);
   font-size: 1.05rem;
   font-weight: 500;
+<<<<<<< Updated upstream
   margin-bottom: var(--space-lg);
   color: var(--marigold-light);
 }
@@ -145,6 +219,21 @@
   min-width: 0; /* prevent overflow */
 }
 
+=======
+  margin-bottom: var(--space-xl);
+  color: var(--gold-light);
+}
+
+.detail-header__desc {
+  font-size: 1.1rem;
+  color: var(--text-secondary);
+  line-height: 1.8;
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+/* Sections */
+>>>>>>> Stashed changes
 .detail-section {
   margin-bottom: var(--space-3xl);
 }
@@ -154,7 +243,9 @@
 }
 
 .detail-section h2 {
-  margin-bottom: var(--space-lg);
+  font-size: 1.75rem;
+  margin-bottom: var(--space-xl);
+  color: var(--charcoal);
   position: relative;
   padding-bottom: var(--space-sm);
 }
@@ -166,10 +257,11 @@
   left: 0;
   width: 40px;
   height: 3px;
-  background-color: var(--terracotta);
+  background-color: var(--orange-accent);
   border-radius: 2px;
 }
 
+<<<<<<< Updated upstream
 /* ---- Highlights ---- */
 .highlights-list {
   display: grid;
@@ -181,14 +273,32 @@
   font-size: 1rem;
   padding: var(--space-md) var(--space-lg);
   background: var(--sand);
+=======
+/* Highlights Grid */
+.highlights-list {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: var(--space-md);
+}
+
+.highlights-list li {
+  font-size: 1.05rem;
+  padding: var(--space-md);
+  background: var(--card-bg);
+  border: 1px solid var(--card-border);
+>>>>>>> Stashed changes
   border-radius: var(--border-radius);
-  color: var(--charcoal);
+  color: var(--text-primary);
   font-weight: 500;
   line-height: 1.5;
   border-left: 3px solid var(--terracotta);
 }
 
+<<<<<<< Updated upstream
 /* ---- Accordion / Itinerary ---- */
+=======
+/* Itinerary Accordion */
+>>>>>>> Stashed changes
 .itinerary-accordion {
   display: flex;
   flex-direction: column;
@@ -196,15 +306,19 @@
 }
 
 .accordion-item {
-  border: 1px solid var(--light-gray);
+  border: 1px solid var(--card-border);
   border-radius: var(--border-radius-lg);
   overflow: hidden;
+<<<<<<< Updated upstream
   background: white;
   transition: box-shadow 0.2s ease;
 }
 
 .accordion-item:hover {
   box-shadow: var(--shadow-sm);
+=======
+  background: var(--card-bg);
+>>>>>>> Stashed changes
 }
 
 .accordion-header {
@@ -212,18 +326,18 @@
   display: flex;
   align-items: center;
   padding: var(--space-md) var(--space-lg);
-  background: var(--cream);
+  background: var(--card-bg);
   text-align: left;
   transition: background 0.2s ease;
   gap: var(--space-sm);
 }
 
 .accordion-header:hover {
-  background: var(--sand);
+  background: var(--card-bg-hover);
 }
 
 .day-badge {
-  background: var(--terracotta);
+  background: var(--orange-accent);
   color: white;
   padding: 4px 10px;
   border-radius: 4px;
@@ -233,16 +347,28 @@
   white-space: nowrap;
 }
 
+<<<<<<< Updated upstream
 .accordion-header h3 {
   font-size: 1rem;
   margin: 0;
+=======
+.accordion-title {
+  font-weight: 600;
+  font-size: 1.05rem;
+  color: var(--charcoal);
+>>>>>>> Stashed changes
   flex-grow: 1;
   line-height: 1.4;
 }
 
 .accordion-icon {
+<<<<<<< Updated upstream
   font-size: 1.4rem;
   color: var(--terracotta);
+=======
+  font-size: 1.5rem;
+  color: var(--orange-accent);
+>>>>>>> Stashed changes
   font-weight: 300;
   flex-shrink: 0;
   width: 24px;
@@ -250,9 +376,11 @@
 }
 
 .accordion-content {
-  padding: 0;
   max-height: 0;
   overflow: hidden;
+  padding: 0 var(--space-lg);
+  color: var(--text-secondary);
+  line-height: 1.7;
   transition: all 0.3s ease;
 }
 
@@ -265,11 +393,12 @@
 .accordion-item.active .accordion-content {
   padding: var(--space-md) var(--space-lg) var(--space-lg);
   max-height: 500px;
-  border-top: 1px solid var(--light-gray);
+  border-top: 1px solid var(--card-border);
 }
 
 /* ---- Right column / Sidebar ---- */
 .detail-sidebar {
+<<<<<<< Updated upstream
   display: flex;
   flex-direction: column;
   gap: var(--space-lg);
@@ -286,16 +415,20 @@
 .detail-sidebar::-webkit-scrollbar-thumb {
   background: var(--light-gray);
   border-radius: 2px;
+=======
+  min-width: 0;
+>>>>>>> Stashed changes
 }
 
 .sidebar-card {
-  background: white;
-  border: 1px solid var(--light-gray);
+  background: var(--card-bg);
+  border: 1px solid var(--card-border);
   border-radius: var(--border-radius-lg);
   padding: var(--space-lg);
   box-shadow: var(--shadow-sm);
 }
 
+<<<<<<< Updated upstream
 .sidebar-card h3 {
   margin-bottom: var(--space-md);
   font-size: 1.15rem;
@@ -353,8 +486,24 @@
   position: relative;
   font-size: 0.9rem;
   line-height: 1.5;
-  color: var(--warm-gray);
+=======
+.sidebar-card__header {
+  text-align: center;
+  margin-bottom: var(--space-xl);
+  padding-bottom: var(--space-lg);
+  border-bottom: 1px solid var(--light-gray);
 }
+
+.price-label {
+  display: block;
+  font-size: 0.9rem;
+>>>>>>> Stashed changes
+  color: var(--warm-gray);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  margin-bottom: 4px;
+}
+<<<<<<< Updated upstream
 .cross-list li::before {
   content: '✕';
   position: absolute;
@@ -366,13 +515,40 @@
 /* Pricing card */
 .pricing-card {
   background: linear-gradient(135deg, #FFFAF5, #FAF3E8);
+=======
+
+.price-amount {
+  font-size: 2.5rem;
+  font-weight: 700;
+  color: var(--charcoal);
+  font-family: var(--font-heading);
+}
+
+.price-unit {
+  font-size: 1rem;
+  color: var(--warm-gray);
+  font-weight: 400;
+}
+
+.sidebar-card__content {
+  margin-bottom: var(--space-xl);
+}
+
+.sidebar-card__content h4 {
+  font-size: 1.1rem;
+  margin-bottom: var(--space-md);
+  color: var(--charcoal);
+>>>>>>> Stashed changes
 }
 
 .pricing-list {
   display: flex;
   flex-direction: column;
   gap: var(--space-sm);
+<<<<<<< Updated upstream
   margin-bottom: var(--space-sm);
+=======
+>>>>>>> Stashed changes
 }
 
 .pricing-list li {
@@ -381,6 +557,7 @@
   align-items: center;
   padding: var(--space-xs) 0;
   padding-bottom: var(--space-sm);
+<<<<<<< Updated upstream
   border-bottom: 1px dashed var(--light-gray);
   font-size: 0.9rem;
 }
@@ -401,17 +578,45 @@
   color: var(--warm-gray);
   font-style: italic;
   line-height: 1.5;
+=======
+  border-bottom: 1px dashed rgba(255, 255, 255, 0.15);
+}
+
+.pricing-list li strong {
+  color: var(--orange-accent);
+  font-size: 1.1rem;
+}
+
+.sidebar-card__actions {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-md);
+}
+
+.sidebar-card__actions .btn {
+  width: 100%;
+  justify-content: center;
+>>>>>>> Stashed changes
 }
 
 /* Sticky Enquire CTA block */
 .sticky-enquire {
+<<<<<<< Updated upstream
   background: var(--sand);
   padding: var(--space-lg);
+=======
+  position: sticky;
+  top: 100px;
+  background: var(--card-bg);
+  border: 1px solid var(--card-border);
+  padding: var(--space-xl);
+>>>>>>> Stashed changes
   border-radius: var(--border-radius-lg);
   text-align: center;
   border: 2px dashed var(--light-gray);
 }
 
+<<<<<<< Updated upstream
 .sticky-enquire h4 {
   margin-bottom: var(--space-xs);
   font-size: 1.1rem;
@@ -425,14 +630,39 @@
 
 /* ---- Related / Similar Trips ---- */
 .related-packages {
+=======
+.sticky-enquire h3 {
+  margin-bottom: var(--space-sm);
+}
+
+.sticky-enquire p {
+  font-size: 0.95rem;
+  margin-bottom: var(--space-lg);
+}
+
+.sticky-enquire .btn {
+  width: 100%;
+  justify-content: center;
+}
+
+/* Related Packages */
+.related-packages {
+  margin-top: var(--space-4xl);
+  padding-top: var(--space-4xl);
+>>>>>>> Stashed changes
   border-top: 1px solid var(--light-gray);
 }
 
 .related-grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
+<<<<<<< Updated upstream
   gap: var(--space-xl);
   margin-top: var(--space-xl);
+=======
+  gap: var(--space-lg);
+  margin-top: var(--space-2xl);
+>>>>>>> Stashed changes
 }
 
 .related-card {
@@ -440,17 +670,22 @@
   flex-direction: column;
   border-radius: var(--border-radius-lg);
   overflow: hidden;
-  background: white;
+  background: var(--card-bg);
+  border: 1px solid var(--card-border);
   box-shadow: var(--shadow-sm);
   transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
 .related-card:hover {
+<<<<<<< Updated upstream
   transform: translateY(-5px);
   box-shadow: var(--shadow-md);
+=======
+  transform: translateY(-4px);
+>>>>>>> Stashed changes
 }
 
-.related-card img {
+.related-card__img {
   width: 100%;
   height: 180px;
   object-fit: cover;
@@ -463,18 +698,25 @@
   gap: 4px;
 }
 
+<<<<<<< Updated upstream
 .related-card__info h3 {
   font-size: 1.05rem;
   margin: 0;
   line-height: 1.3;
+=======
+.related-card__info h4 {
+  font-size: 1.1rem;
+  margin-bottom: 4px;
+>>>>>>> Stashed changes
 }
 
 .related-card__info span {
-  color: var(--terracotta);
+  color: var(--orange-accent);
   font-weight: 600;
   font-size: 0.9rem;
 }
 
+<<<<<<< Updated upstream
 /* ---- Responsive ---- */
 
 @media (max-width: 1100px) {
@@ -488,6 +730,35 @@
   .detail-layout {
     grid-template-columns: 1fr;
     gap: var(--space-xl);
+=======
+@media (max-width: 1024px) {
+  .detail-layout {
+    grid-template-columns: 1fr;
+    gap: var(--space-4xl);
+  }
+
+  .detail-sidebar {
+    position: relative;
+    max-width: 500px;
+    margin: 0 auto;
+    width: 100%;
+  }
+
+  .sticky-enquire {
+    position: static;
+    margin-top: var(--space-xl);
+  }
+
+  .related-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 768px) {
+  .detail-hero {
+    height: 45vh;
+    min-height: 350px;
+>>>>>>> Stashed changes
   }
 
   .detail-sidebar {
@@ -495,6 +766,7 @@
     max-height: none;
     overflow-y: visible;
   }
+<<<<<<< Updated upstream
 
   .related-grid {
     grid-template-columns: repeat(2, 1fr);
@@ -519,11 +791,20 @@
 
   .detail-header__thumbs {
     display: none;
+=======
+}
+
+@media (max-width: 600px) {
+  .detail-header__quick-stats {
+    flex-direction: column;
+    gap: var(--space-sm);
+>>>>>>> Stashed changes
   }
 
   .related-grid {
     grid-template-columns: 1fr;
   }
+<<<<<<< Updated upstream
 
   .detail-layout {
     gap: var(--space-lg);
@@ -536,4 +817,6 @@
   .sidebar-card {
     padding: var(--space-md);
   }
+=======
+>>>>>>> Stashed changes
 }

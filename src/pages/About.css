@@ -64,7 +64,7 @@
 }
 
 .about-story__text strong {
-  color: var(--terracotta);
+  color: var(--orange-accent);
   font-family: var(--font-heading);
   font-size: 1.3rem;
   display: block;
@@ -131,7 +131,8 @@
 }
 
 .founder-card {
-  background: white;
+  background: var(--card-bg);
+  border: 1px solid var(--card-border);
   border-radius: var(--border-radius-lg);
   overflow: hidden;
   box-shadow: var(--shadow-sm);
@@ -150,13 +151,13 @@
 .founder-placeholder {
   width: 100%;
   height: 100%;
-  background: linear-gradient(135deg, var(--teal), var(--indigo));
+  background: linear-gradient(135deg, var(--forest-green-light), var(--forest-green));
   display: flex;
   align-items: center;
   justify-content: center;
   font-family: var(--font-heading);
   font-size: 4rem;
-  color: rgba(255, 255, 255, 0.3);
+  color: rgba(255, 255, 255, 0.4);
   font-weight: 700;
 }
 
@@ -174,7 +175,7 @@
 }
 
 .founder-role {
-  color: var(--terracotta);
+  color: var(--orange-accent);
   font-weight: 600;
   font-size: 0.95rem;
   margin-bottom: var(--space-md);
@@ -192,7 +193,7 @@
   display: flex;
   gap: var(--space-md);
   padding-top: var(--space-md);
-  border-top: 1px solid var(--light-gray);
+  border-top: 1px solid var(--card-border);
   flex-wrap: wrap;
 }
 
@@ -306,4 +307,3 @@
     font-size: 1.15rem;
   }
 }
-

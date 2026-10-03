@@ -1,6 +1,6 @@
 import { Link } from 'react-router-dom';
 import { founders } from '../../data/founders';
-import { Compass, Phone, MessageCircle, Sun } from '../Icons';
+import { Phone, MessageCircle, Sun } from '../Icons';
 import './Footer.css';
 
 export default function Footer() {
@@ -10,8 +10,11 @@ export default function Footer() {
         <div className="footer__top">
           <div className="footer__brand">
             <Link to="/" className="footer__logo">
-              <span className="footer__logo-icon"><Compass size={20} /></span>
-              <span className="footer__logo-text">TravelHack</span>
+              <img
+                src="/logo-travelhack.jpg"
+                alt="TravelHack"
+                className="footer__logo-img"
+              />
             </Link>
             <p className="footer__tagline">
               Real trips. Real people. Real India.
