@@ -305,10 +305,7 @@ export default function Home() {
         <div className="gallery-strip__masonry">
           {galleryImages.slice(0, 8).map((img, i) => (
             <div className="gallery-strip__item" key={img.id} style={{ animationDelay: `${i * 0.1}s` }}>
-              <img src={img.src} alt={img.alt} loading="lazy" />
-              <div className="gallery-strip__item-overlay">
-                <span>{img.tag}</span>
-              </div>
+              <img src={img.src} alt="" loading="lazy" />
             </div>
           ))}
         </div>
