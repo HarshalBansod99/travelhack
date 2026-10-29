@@ -2,6 +2,10 @@ import { useState, useEffect } from 'react';
 import { useParams, Link, useNavigate } from 'react-router-dom';
 import { packages } from '../data/packages';
 import { supabase } from '../lib/supabase';
+import {
+  MapPin, Clock, Users, Wallet, Sparkles,
+  CheckCircle, XCircle, MessageCircle
+} from '../components/Icons';
 import './PackageDetail.css';
 
 export default function PackageDetail() {
@@ -55,6 +59,7 @@ export default function PackageDetail() {
                 key={i} 
                 className={`detail-header__thumb ${i === currentImage ? 'active' : ''}`}
                 onClick={() => setCurrentImage(i)}
+                aria-label={`View photo ${i + 1}`}
               >
                 <img src={img} alt={`Thumbnail ${i + 1}`} />
               </button>
@@ -65,13 +70,16 @@ export default function PackageDetail() {
         <div className="detail-header__info">
           <div className="detail-header__meta">
             <span className="badge badge--category">{pkg.category}</span>
-            <span className="badge badge--region">📍 {pkg.region}</span>
+            <span className="badge badge--region">
+              <MapPin size={13} style={{ display: 'inline', verticalAlign: 'middle', marginRight: '4px' }} />
+              {pkg.region}
+            </span>
           </div>
           <h1>{pkg.title}</h1>
           <div className="detail-header__quick-stats">
-            <span>⏱️ {pkg.duration}</span>
-            <span>👥 {pkg.groupSize}</span>
-            <span>💰 Starts from ₹{pkg.startingPrice?.toLocaleString('en-IN') || 'Custom'}</span>
+            <span><Clock size={16} /> {pkg.duration}</span>
+            <span><Users size={16} /> {pkg.groupSize}</span>
+            <span><Wallet size={16} /> Starts from &#8377;{pkg.startingPrice?.toLocaleString('en-IN') || 'Custom'}</span>
           </div>
           <p className="detail-header__desc">{pkg.description}</p>
           
@@ -82,7 +90,7 @@ export default function PackageDetail() {
             rel="noopener noreferrer"
             className="btn btn--primary btn--lg"
           >
-            Enquire on WhatsApp
+            <MessageCircle size={20} /> Enquire on WhatsApp
           </a>
         </div>
       </section>
@@ -97,7 +105,10 @@ export default function PackageDetail() {
                 <h2>Trip Highlights</h2>
                 <ul className="highlights-list">
                   {pkg.highlights.map((hl, i) => (
-                    <li key={i}>✦ {hl}</li>
+                    <li key={i}>
+                      <Sparkles size={16} className="hl-icon" />
+                      <span>{hl}</span>
+                    </li>
                   ))}
                 </ul>
               </div>
@@ -116,6 +127,7 @@ export default function PackageDetail() {
                       <button 
                         className="accordion-header"
                         onClick={() => setActiveDay(activeDay === day.day ? null : day.day)}
+                        aria-expanded={activeDay === day.day}
                       >
                         <span className="day-badge">Day {day.day}</span>
                         <h3>{day.title}</h3>
@@ -137,14 +149,20 @@ export default function PackageDetail() {
               <h3>Inclusions & Exclusions</h3>
               
               <div className="inc-exc-block">
-                <h4 className="inc-title">✅ What's Included</h4>
+                <h4 className="inc-title">
+                  <CheckCircle size={18} style={{ display: 'inline', verticalAlign: 'middle', marginRight: '6px' }} />
+                  What's Included
+                </h4>
                 <ul className="check-list">
                   {pkg.inclusions.map((inc, i) => <li key={i}>{inc}</li>)}
                 </ul>
               </div>
 
               <div className="inc-exc-block">
-                <h4 className="exc-title">❌ What's Not Included</h4>
+                <h4 className="exc-title">
+                  <XCircle size={18} style={{ display: 'inline', verticalAlign: 'middle', marginRight: '6px' }} />
+                  What's Not Included
+                </h4>
                 <ul className="cross-list">
                   {pkg.exclusions.map((exc, i) => <li key={i}>{exc}</li>)}
                 </ul>
@@ -176,7 +194,7 @@ export default function PackageDetail() {
                 className="btn btn--whatsapp"
                 style={{ width: '100%', justifyContent: 'center', display: 'inline-flex' }}
               >
-                Message Harshal
+                <MessageCircle size={18} /> Message Harshal
               </a>
             </div>
           </aside>
@@ -195,7 +213,7 @@ export default function PackageDetail() {
                   <img src={p.image} alt={p.title} />
                   <div className="related-card__info">
                     <h3>{p.title}</h3>
-                    <span>₹{p.startingPrice?.toLocaleString('en-IN') || 'Custom'}</span>
+                    <span>&#8377;{p.startingPrice?.toLocaleString('en-IN') || 'Custom'}</span>
                   </div>
                 </Link>
               ))}

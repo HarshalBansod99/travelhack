@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { founders } from '../data/founders';
 import { supabase } from '../lib/supabase';
+import { Phone, MessageCircle } from '../components/Icons';
 import './Contact.css';
 
 export default function Contact() {
@@ -62,8 +63,14 @@ export default function Contact() {
                     <h3>{f.name}</h3>
                     <span>{f.role}</span>
                     <div className="fcc-links">
-                      <a href={`tel:${f.phone}`} className="fcc-link">📞 {f.phoneDisplay}</a>
-                      <a href={`${f.whatsapp}`} target="_blank" rel="noopener noreferrer" className="fcc-link fcc-link--wa">💬 WhatsApp Me</a>
+                      <a href={`tel:${f.phone}`} className="fcc-link">
+                        <Phone size={14} style={{ display: 'inline', verticalAlign: 'middle', marginRight: '4px' }} />
+                        {f.phoneDisplay}
+                      </a>
+                      <a href={`${f.whatsapp}`} target="_blank" rel="noopener noreferrer" className="fcc-link fcc-link--wa">
+                        <MessageCircle size={14} style={{ display: 'inline', verticalAlign: 'middle', marginRight: '4px' }} />
+                        WhatsApp Me
+                      </a>
                     </div>
                   </div>
                 </div>
@@ -74,7 +81,6 @@ export default function Contact() {
               <h3>Office</h3>
               <p>While we're mostly on the road (or on WhatsApp), our official base is in Maharashtra.</p>
               <p><strong>Email:</strong> hello@travelhack.in</p>
-              
             </div>
           </div>
 
@@ -87,17 +93,17 @@ export default function Contact() {
               <form onSubmit={handleSubmit} className="contact-form">
                 <div className="form-group">
                   <label htmlFor="name">Your Name</label>
-                  <input type="text" id="name" name="name" value={formData.name} onChange={handleChange} required />
+                  <input type="text" id="name" name="name" value={formData.name} onChange={handleChange} required placeholder="Your full name" />
                 </div>
                 
                 <div className="form-group">
                   <label htmlFor="phone">Phone Number (WhatsApp preferred)</label>
-                  <input type="tel" id="phone" name="phone" value={formData.phone} onChange={handleChange} required />
+                  <input type="tel" id="phone" name="phone" value={formData.phone} onChange={handleChange} required placeholder="e.g. 9876543210" />
                 </div>
                 
                 <div className="form-group">
                   <label htmlFor="email">Email Address</label>
-                  <input type="email" id="email" name="email" value={formData.email} onChange={handleChange} required />
+                  <input type="email" id="email" name="email" value={formData.email} onChange={handleChange} required placeholder="you@example.com" />
                 </div>
                 
                 <div className="form-group">
@@ -106,7 +112,7 @@ export default function Contact() {
                 </div>
                 
                 <button type="submit" className="btn btn--primary btn--lg contact-submit">
-                  Send Message
+                  <MessageCircle size={18} /> Send Message via WhatsApp
                 </button>
               </form>
             </div>

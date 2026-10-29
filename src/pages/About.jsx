@@ -1,5 +1,6 @@
 import { Link } from 'react-router-dom';
 import { founders } from '../data/founders';
+import { Phone, MessageCircle, Handshake, Smartphone, MapPin } from '../components/Icons';
 import './About.css';
 
 export default function About() {
@@ -35,8 +36,8 @@ export default function About() {
             </p>
           </div>
           <div className="about-story__images">
-            <img src="/images/Atal Tunnel/SUR_0252.JPG" alt="Travel group photo" className="about-img-1" />
-            <img src="/images/Hidimba Temple/SUR_0482.JPG" alt="Mountain road" className="about-img-2" />
+            <img src="/images/Atal Tunnel/SUR_0252.JPG" alt="Travel group photo at Atal Tunnel" className="about-img-1" loading="lazy" />
+            <img src="/images/Hidimba Temple/SUR_0482.JPG" alt="Hidimba Temple in Manali" className="about-img-2" loading="lazy" />
           </div>
         </div>
       </section>
@@ -64,15 +65,15 @@ export default function About() {
                   
                   <div className="founder-contact">
                     <a href={`tel:${f.phone}`} className="btn btn--secondary btn--sm">
-                      📞 {f.phoneDisplay}
+                      <Phone size={14} /> {f.phoneDisplay}
                     </a>
                     <a 
-                      href={`${f.whatsapp}?text=Hi%20${f.name.split(' ')[0]}!%20I%20want%20to%20plan%20a%20trip.`}
+                      href={`${f.whatsapp}?text=${encodeURIComponent(`Hi ${f.name.split(' ')[0]}! I want to plan a trip.`)}`}
                       target="_blank"
                       rel="noopener noreferrer"
                       className="btn btn--whatsapp btn--sm"
                     >
-                      💬 Message
+                      <MessageCircle size={14} /> WhatsApp
                     </a>
                   </div>
                 </div>
@@ -84,20 +85,27 @@ export default function About() {
 
       <section className="section about-values">
         <div className="container text-center">
+          <span className="section-label">our core values</span>
           <h2>How We Work</h2>
           <div className="values-grid">
             <div className="value-item">
-              <span className="value-icon">🤝</span>
+              <div className="value-icon-circle">
+                <Handshake size={32} />
+              </div>
               <h4>No Hidden Cuts</h4>
               <p>We don't force you into specific shops or restaurants just to get a commission. Your time is yours.</p>
             </div>
             <div className="value-item">
-              <span className="value-icon">📱</span>
+              <div className="value-icon-circle">
+                <Smartphone size={32} />
+              </div>
               <h4>WhatsApp First</h4>
               <p>No clunky ticketing systems or hold music. You message us, we reply. Simple as that.</p>
             </div>
             <div className="value-item">
-              <span className="value-icon">📍</span>
+              <div className="value-icon-circle">
+                <MapPin size={32} />
+              </div>
               <h4>Local Expertise</h4>
               <p>We work directly with local drivers and homestays. The money goes where it belongs — into the local economy.</p>
             </div>

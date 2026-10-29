@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import { supabase } from '../lib/supabase';
-import { MessageCircle, Globe, Users, Clock, Home } from '../components/Icons';
+import { MessageCircle, Globe, Users, Clock, Home, LogOut } from '../components/Icons';
 import { Link } from 'react-router-dom';
 import './Admin.css';
 
@@ -65,7 +65,7 @@ export default function Admin() {
             />
             <button type="submit" className="btn btn--primary">Access Dashboard</button>
           </form>
-          <Link to="/" className="back-to-home">← Back to Site</Link>
+          <Link to="/" className="back-to-home">&larr; Back to Site</Link>
         </div>
       </div>
     );
@@ -76,45 +76,55 @@ export default function Admin() {
       {/* Sidebar */}
       <aside className="admin-sidebar">
         <div className="admin-sidebar-header">
-          <Globe size={32} className="admin-logo" />
-          <h2>TravelHack</h2>
-          <span className="admin-badge">Admin</span>
+          <div className="admin-sidebar-brand">
+            <Globe size={28} className="admin-logo" />
+            <h2>TravelHack</h2>
+            <span className="admin-badge">Admin</span>
+          </div>
+          <div className="admin-mobile-actions">
+            <Link to="/" className="btn btn--sm btn--glass" title="View Site">
+              <Home size={16} />
+            </Link>
+            <button className="btn btn--sm logout-btn-compact" onClick={() => setIsAuthenticated(false)} title="Logout">
+              Logout
+            </button>
+          </div>
         </div>
         <nav className="admin-nav">
           <button 
             className={`admin-nav-item ${activeTab === 'custom' ? 'active' : ''}`}
             onClick={() => setActiveTab('custom')}
           >
-            <Globe size={20} />
-            Custom Trips
+            <Globe size={18} />
+            <span>Custom Trips</span>
             <span className="count-badge">{data.customTrips.length}</span>
           </button>
           <button 
             className={`admin-nav-item ${activeTab === 'enquiries' ? 'active' : ''}`}
             onClick={() => setActiveTab('enquiries')}
           >
-            <Clock size={20} />
-            Package Enquiries
+            <Clock size={18} />
+            <span>Package Enquiries</span>
             <span className="count-badge">{data.packageEnquiries.length}</span>
           </button>
           <button 
             className={`admin-nav-item ${activeTab === 'contact' ? 'active' : ''}`}
             onClick={() => setActiveTab('contact')}
           >
-            <MessageCircle size={20} />
-            Contact Messages
+            <MessageCircle size={18} />
+            <span>Contact Messages</span>
             <span className="count-badge">{data.contactMessages.length}</span>
           </button>
         </nav>
         
         <div className="admin-sidebar-footer">
           <Link to="/" className="admin-nav-item">
-            <Home size={20} />
-            View Live Site
+            <Home size={18} />
+            <span>View Live Site</span>
           </Link>
           <button className="admin-nav-item logout-btn" onClick={() => setIsAuthenticated(false)}>
-            <Users size={20} />
-            Logout
+            <Users size={18} />
+            <span>Logout</span>
           </button>
         </div>
       </aside>

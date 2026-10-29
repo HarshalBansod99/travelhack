@@ -3,7 +3,8 @@ import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import {
   Phone, MessageCircle, Star, ArrowDown,
-  ArrowRight, MapPin, Calendar, Clock, CheckCircle, XCircle, Users, Mountain, Sun, Snowflake, Tent, Music
+  ArrowRight, MapPin, Calendar, Clock, CheckCircle, XCircle,
+  Users, Mountain, Snowflake, Tent, Music, Sparkles
 } from '../components/Icons';
 import { testimonials } from '../data/testimonials';
 import { packages } from '../data/packages';
@@ -20,13 +21,87 @@ const heroSlides = [
   { image: 'https://images.unsplash.com/photo-1486870591958-9b9d0d1dda99?w=1600&q=80', alt: 'Manikaran golden hour mountains' },
 ];
 
+/* Hero background video — fast-loading, web-optimized Himalayan mountain aerial */
+const heroVideoUrl = 'https://assets.mixkit.co/videos/preview/mixkit-aerial-view-of-snow-capped-mountains-41275-large.mp4';
+
+/* 6 Experience Highlights with verified online photos + local fallbacks */
 const experienceHighlights = [
-  { icon: '🏔️', title: 'Solang Valley', desc: 'Snow activities & Atal Tunnel' },
-  { icon: '🛕', title: 'Hadimba Temple', desc: 'Ancient temple in deodar forest' },
-  { icon: '🏕️', title: 'Kasol Camping', desc: 'Riverside camps with bonfire' },
-  { icon: '🎶', title: 'DJ Night', desc: 'Music under the mountain stars' },
-  { icon: '🌊', title: 'River Rafting', desc: 'Adventure at Kullu rapids' },
-  { icon: '♨️', title: 'Manikaran Springs', desc: 'Sacred hot water spring' },
+  {
+    image: 'https://images.unsplash.com/photo-1626621341517-bbf3d9990a23?w=800&q=80',
+    fallback: '/images/Atal Tunnel/SUR_0168.JPG',
+    video: 'https://assets.mixkit.co/videos/preview/mixkit-aerial-view-of-snow-capped-mountains-41275-large.mp4',
+    tag: 'Snow & Atal Tunnel',
+    title: 'Solang Valley',
+    desc: 'Skiing, tube slides, zorbing, and the world-famous Atal Tunnel transit.',
+  },
+  {
+    image: '/images/Hidimba Temple/SUR_0482.JPG',
+    fallback: 'https://images.unsplash.com/photo-1605649487212-47bdab064df7?w=800&q=80',
+    video: 'https://assets.mixkit.co/videos/preview/mixkit-curving-road-in-a-pine-forest-41719-large.mp4',
+    tag: 'Heritage & Forest',
+    title: 'Hadimba Temple',
+    desc: 'Ancient 16th-century wooden pagoda temple surrounded by towering cedar pines.',
+  },
+  {
+    image: 'https://images.unsplash.com/photo-1517851128435-29bcc8f5d581?w=800&q=80',
+    fallback: '/images/General Photos/DSC_0116.JPG',
+    video: 'https://assets.mixkit.co/videos/preview/mixkit-bonfire-burning-in-the-night-42880-large.mp4',
+    tag: 'Riverside Vibe',
+    title: 'Kasol Camping',
+    desc: 'Alpine riverside camp under starry skies with cozy bonfires and Parvati River sounds.',
+  },
+  {
+    image: 'https://images.unsplash.com/photo-1470225620780-dba8ba36b745?w=800&q=80',
+    fallback: 'https://images.unsplash.com/photo-1516450360452-9312f5e86fc7?w=800&q=80',
+    video: 'https://assets.mixkit.co/videos/preview/mixkit-colorful-lights-in-a-party-or-club-41208-large.mp4',
+    tag: 'Music & Stars',
+    title: 'DJ Night',
+    desc: 'Electrifying beats under the Himalayan night sky with fellow travelers.',
+  },
+  {
+    image: 'https://images.unsplash.com/photo-1508166466920-f65aa51f727c?w=800&q=80',
+    fallback: 'https://images.unsplash.com/photo-1544551763-46a013bb70d5?w=800&q=80',
+    video: 'https://assets.mixkit.co/videos/preview/mixkit-river-flowing-through-the-forest-41718-large.mp4',
+    tag: 'Kullu Adventure',
+    title: 'River Rafting',
+    desc: 'Adrenaline-pumping white water rafting through the wild rapids of the Beas river.',
+  },
+  {
+    image: '/images/General Photos/DSC_0138.JPG',
+    fallback: 'https://images.unsplash.com/photo-1596176530529-78163a4f7af2?w=800&q=80',
+    video: 'https://assets.mixkit.co/videos/preview/mixkit-river-flowing-through-the-forest-41718-large.mp4',
+    tag: 'Sacred Healing',
+    title: 'Manikaran Springs',
+    desc: 'Historic hot sulfur springs and sacred Gurudwara nestled beside roaring waters.',
+  },
+];
+
+/* Cinematic Video Reels showcase */
+const videoReels = [
+  {
+    title: 'Snow Peaks of Solang',
+    subtitle: 'Atal Tunnel & Valley',
+    videoUrl: 'https://assets.mixkit.co/videos/preview/mixkit-aerial-view-of-snow-capped-mountains-41275-large.mp4',
+    poster: 'https://images.unsplash.com/photo-1626621341517-bbf3d9990a23?w=800&q=80',
+  },
+  {
+    title: 'Kullu River Rapids',
+    subtitle: 'White Water Rafting',
+    videoUrl: 'https://assets.mixkit.co/videos/preview/mixkit-river-flowing-through-the-forest-41718-large.mp4',
+    poster: 'https://images.unsplash.com/photo-1508166466920-f65aa51f727c?w=800&q=80',
+  },
+  {
+    title: 'Kasol Bonfire & Camping',
+    subtitle: 'Night under the Stars',
+    videoUrl: 'https://assets.mixkit.co/videos/preview/mixkit-bonfire-burning-in-the-night-42880-large.mp4',
+    poster: 'https://images.unsplash.com/photo-1517851128435-29bcc8f5d581?w=800&q=80',
+  },
+  {
+    title: 'Alpine DJ Night Party',
+    subtitle: 'Dance in the Mountains',
+    videoUrl: 'https://assets.mixkit.co/videos/preview/mixkit-colorful-lights-in-a-party-or-club-41208-large.mp4',
+    poster: 'https://images.unsplash.com/photo-1470225620780-dba8ba36b745?w=800&q=80',
+  },
 ];
 
 function useInView(options = {}) {
@@ -53,7 +128,7 @@ function AnimatedSection({ children, className = '', delay = 0 }) {
       className={className}
       style={{
         opacity: isVisible ? 1 : 0,
-        transform: isVisible ? 'translateY(0)' : 'translateY(30px)',
+        transform: isVisible ? 'translateY(0)' : 'translateY(24px)',
         transition: `opacity 0.6s ease ${delay}s, transform 0.6s ease ${delay}s`,
       }}
     >
@@ -65,6 +140,9 @@ function AnimatedSection({ children, className = '', delay = 0 }) {
 export default function Home() {
   const [currentSlide, setCurrentSlide] = useState(0);
   const [activeDay, setActiveDay] = useState(1);
+  const [videoLoaded, setVideoLoaded] = useState(false);
+  const [activeVideoCard, setActiveVideoCard] = useState(null);
+  const videoRef = useRef(null);
 
   useEffect(() => {
     const timer = setInterval(() => {
@@ -73,13 +151,41 @@ export default function Home() {
     return () => clearInterval(timer);
   }, []);
 
+  // Ensure hero video autoplays safely across browsers
+  useEffect(() => {
+    if (videoRef.current) {
+      videoRef.current.muted = true;
+      videoRef.current.play().then(() => {
+        setVideoLoaded(true);
+      }).catch(() => {
+        setVideoLoaded(false);
+      });
+    }
+  }, []);
+
   const whatsappMessage = encodeURIComponent('Hi TravelHack! I\'m interested in the Manali – Solang, Atal Tunnel, Kasol, Manikaran trip. Can we discuss dates and availability?');
 
   return (
     <main className="home">
-      {/* ===== HERO ===== */}
+      {/* ===== HERO WITH REPLAYED VIDEO BACKGROUND ===== */}
       <section className="hero" id="hero">
-        <div className="hero__slides">
+        <div className="hero__video-wrap">
+          <video
+            ref={videoRef}
+            className={`hero__video ${videoLoaded ? 'hero__video--loaded' : ''}`}
+            autoPlay
+            muted
+            loop
+            playsInline
+            preload="metadata"
+            onCanPlayThrough={() => setVideoLoaded(true)}
+          >
+            <source src={heroVideoUrl} type="video/mp4" />
+          </video>
+        </div>
+
+        {/* Fallback image slideshow (active when video loads or is loading) */}
+        <div className={`hero__slides ${videoLoaded ? 'hero__slides--hidden' : ''}`}>
           {heroSlides.map((slide, i) => (
             <div
               key={i}
@@ -90,7 +196,9 @@ export default function Home() {
             />
           ))}
         </div>
+
         <div className="hero__overlay" />
+
         <div className="hero__content container">
           <motion.div
             className="hero__badge-row"
@@ -98,8 +206,12 @@ export default function Home() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.2, duration: 0.6 }}
           >
-            <span className="hero__trip-badge">🏔️ Nagpur → Delhi → Manali → Kasol → Nagpur</span>
+            <span className="hero__trip-badge">
+              <MapPin size={14} style={{ display: 'inline', verticalAlign: 'middle', marginRight: '6px' }} />
+              Nagpur &rarr; Delhi &rarr; Manali &rarr; Kasol &rarr; Nagpur
+            </span>
           </motion.div>
+
           <motion.h1
             className="hero__title"
             initial={{ opacity: 0, y: 30 }}
@@ -110,6 +222,7 @@ export default function Home() {
             <br />
             <em>Kasol & Manikaran</em>
           </motion.h1>
+
           <motion.p
             className="hero__subtitle"
             initial={{ opacity: 0, y: 20 }}
@@ -117,19 +230,21 @@ export default function Home() {
             transition={{ delay: 0.7, duration: 0.6 }}
           >
             Snow-capped peaks, ancient temples, riverside camping, and mountain adventures. 
-            7 days from Nagpur — starting at just ₹8,999/person.
+            7 days from Nagpur — starting at just &#8377;8,999/person.
           </motion.p>
+
           <motion.div
             className="hero__quick-info"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.9, duration: 0.6 }}
           >
-            <div className="hero__info-chip"><Calendar size={16} /> 6D/5N</div>
-            <div className="hero__info-chip"><MapPin size={16} /> From Nagpur</div>
-            <div className="hero__info-chip"><Users size={16} /> Group Tour</div>
-            <div className="hero__info-chip hero__info-chip--price">₹8,999/person</div>
+            <div className="hero__info-chip"><Calendar size={15} /> 6D/5N</div>
+            <div className="hero__info-chip"><MapPin size={15} /> From Nagpur</div>
+            <div className="hero__info-chip"><Users size={15} /> Group Tour</div>
+            <div className="hero__info-chip hero__info-chip--price">&#8377;8,999/person</div>
           </motion.div>
+
           <motion.div
             className="hero__ctas"
             initial={{ opacity: 0, y: 20 }}
@@ -143,14 +258,15 @@ export default function Home() {
               rel="noopener noreferrer"
               id="hero-cta-book"
             >
-              <Phone size={20} /> Book This Trip
+              <Phone size={18} /> Book This Trip
             </a>
             <a href="#itinerary" className="btn btn--hero-browse btn--lg hero__cta-browse" id="hero-cta-itinerary">
               View Itinerary <ArrowDown size={18} />
             </a>
           </motion.div>
+
           <div className="hero__indicators">
-            {heroSlides.map((_, i) => (
+            {!videoLoaded && heroSlides.map((_, i) => (
               <button
                 key={i}
                 className={`hero__indicator ${i === currentSlide ? 'hero__indicator--active' : ''}`}
@@ -160,27 +276,111 @@ export default function Home() {
             ))}
           </div>
         </div>
+
         <div className="hero__scroll-hint">
           <span>Scroll to explore</span>
           <div className="hero__scroll-arrow"><ArrowDown size={18} /></div>
         </div>
       </section>
 
-      {/* ===== EXPERIENCE HIGHLIGHTS ===== */}
+      {/* ===== EXPERIENCE HIGHLIGHTS — REPLACED EMOJIS WITH REAL DESTINATION PHOTOS ===== */}
       <section className="section experience-highlights" id="highlights">
         <div className="container">
           <AnimatedSection>
             <span className="section-label">what awaits you</span>
             <h2>6 Unforgettable Experiences</h2>
-            <p className="experience-highlights__subtitle">From snow-covered valleys to sacred hot springs — each day brings something extraordinary.</p>
+            <p className="experience-highlights__subtitle">
+              From snow-covered valleys to sacred hot springs — each destination captured in its full glory.
+            </p>
           </AnimatedSection>
+
           <div className="experience-highlights__grid">
             {experienceHighlights.map((item, i) => (
               <AnimatedSection key={i} delay={i * 0.08}>
-                <div className="exp-card" id={`exp-card-${i}`}>
-                  <div className="exp-card__icon">{item.icon}</div>
-                  <h3 className="exp-card__title">{item.title}</h3>
-                  <p className="exp-card__desc">{item.desc}</p>
+                <div
+                  className="exp-card"
+                  id={`exp-card-${i}`}
+                  onMouseEnter={() => setActiveVideoCard(i)}
+                  onMouseLeave={() => setActiveVideoCard(null)}
+                >
+                  <div className="exp-card__img-wrap">
+                    {/* Destination photo with auto-fallback to guaranteed local image */}
+                    <img
+                      src={item.image}
+                      alt={item.title}
+                      className="exp-card__img"
+                      loading="lazy"
+                      onError={(e) => {
+                        if (item.fallback && e.currentTarget.getAttribute('data-failed') !== 'true') {
+                          e.currentTarget.setAttribute('data-failed', 'true');
+                          e.currentTarget.src = item.fallback;
+                        }
+                      }}
+                    />
+
+                    {/* Looping video on hover / focus */}
+                    {item.video && (
+                      <video
+                        className={`exp-card__video ${activeVideoCard === i ? 'exp-card__video--active' : ''}`}
+                        src={item.video}
+                        autoPlay
+                        muted
+                        loop
+                        playsInline
+                        preload="none"
+                      />
+                    )}
+
+                    <div className="exp-card__img-overlay" />
+                    <span className="exp-card__tag">{item.tag}</span>
+                  </div>
+
+                  <div className="exp-card__body">
+                    <h3 className="exp-card__title">{item.title}</h3>
+                    <p className="exp-card__desc">{item.desc}</p>
+                  </div>
+                </div>
+              </AnimatedSection>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* ===== REPLAYED VIDEOS IN MOTION REEL SECTION ===== */}
+      <section className="section video-reels-section">
+        <div className="container">
+          <AnimatedSection>
+            <span className="section-label">trip moments in motion</span>
+            <h2>Experience The Journey Live</h2>
+            <p className="video-reels-subtitle">
+              Short replayed clips from our mountain trails — feel the adrenaline, bonfire warmth, and snow before you even pack.
+            </p>
+          </AnimatedSection>
+
+          <div className="video-reels-grid">
+            {videoReels.map((reel, index) => (
+              <AnimatedSection key={index} delay={index * 0.1}>
+                <div className="video-reel-card">
+                  <div className="video-reel-wrap">
+                    <video
+                      className="video-reel-player"
+                      autoPlay
+                      muted
+                      loop
+                      playsInline
+                      poster={reel.poster}
+                    >
+                      <source src={reel.videoUrl} type="video/mp4" />
+                    </video>
+                    <div className="video-reel-overlay">
+                      <span className="video-reel-badge">
+                        <Sparkles size={12} style={{ display: 'inline', verticalAlign: 'middle', marginRight: '4px' }} />
+                        Replay
+                      </span>
+                      <h4 className="video-reel-title">{reel.title}</h4>
+                      <p className="video-reel-subtitle-text">{reel.subtitle}</p>
+                    </div>
+                  </div>
                 </div>
               </AnimatedSection>
             ))}
@@ -208,6 +408,7 @@ export default function Home() {
                   <button
                     className="timeline-item__header"
                     onClick={() => setActiveDay(activeDay === day.day ? null : day.day)}
+                    aria-expanded={activeDay === day.day}
                   >
                     <div className="timeline-item__day-badge">Day {day.day}</div>
                     <h3 className="timeline-item__title">{day.title}</h3>
@@ -275,7 +476,7 @@ export default function Home() {
                 <h3><CheckCircle size={22} /> What's Included</h3>
                 <ul>
                   {manaliPkg.inclusions.map((item, i) => (
-                    <li key={i}><span className="inc-icon">✓</span> {item}</li>
+                    <li key={i}><span className="inc-icon">&#10003;</span> {item}</li>
                   ))}
                 </ul>
               </div>
@@ -285,7 +486,7 @@ export default function Home() {
                 <h3><XCircle size={22} /> What's Not Included</h3>
                 <ul>
                   {manaliPkg.exclusions.map((item, i) => (
-                    <li key={i}><span className="exc-icon">✕</span> {item}</li>
+                    <li key={i}><span className="exc-icon">&#10005;</span> {item}</li>
                   ))}
                 </ul>
               </div>
@@ -363,7 +564,7 @@ export default function Home() {
                 ))}
               </ul>
               <div className="terms-note">
-                <strong>⚠️ Important:</strong> {manaliPkg.importantNote}
+                <strong>Important Notice:</strong> {manaliPkg.importantNote}
               </div>
             </div>
           </AnimatedSection>
@@ -378,11 +579,20 @@ export default function Home() {
           <AnimatedSection>
             <span className="cta-banner__label">ready for manali?</span>
             <h2>Book Your Manali Adventure Now</h2>
-            <p>Starting at just ₹8,999/person. Message us on WhatsApp — no forms, no waiting.</p>
+            <p>Starting at just &#8377;8,999/person. Message us on WhatsApp — no forms, no waiting.</p>
             <div className="cta-banner__contact-numbers">
-              <a href="tel:+918483835171" className="cta-banner__phone">📞 8483835171</a>
-              <a href="tel:+917798664788" className="cta-banner__phone">📞 7798664788</a>
-              <a href="tel:+919359918573" className="cta-banner__phone">📞 9359918573</a>
+              <a href="tel:+918483835171" className="cta-banner__phone">
+                <Phone size={14} style={{ display: 'inline', verticalAlign: 'middle', marginRight: '4px' }} />
+                8483835171
+              </a>
+              <a href="tel:+917798664788" className="cta-banner__phone">
+                <Phone size={14} style={{ display: 'inline', verticalAlign: 'middle', marginRight: '4px' }} />
+                7798664788
+              </a>
+              <a href="tel:+919359918573" className="cta-banner__phone">
+                <Phone size={14} style={{ display: 'inline', verticalAlign: 'middle', marginRight: '4px' }} />
+                9359918573
+              </a>
             </div>
             <div className="cta-banner__buttons">
               <a

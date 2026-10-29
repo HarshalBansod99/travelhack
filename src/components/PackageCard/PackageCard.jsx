@@ -1,4 +1,5 @@
 import { Link } from 'react-router-dom';
+import { Clock, MapPin, Users, Sparkles, MessageCircle } from '../Icons';
 import './PackageCard.css';
 
 export default function PackageCard({ pkg }) {
@@ -8,7 +9,8 @@ export default function PackageCard({ pkg }) {
         <img src={pkg.image} alt={pkg.title} loading="lazy" />
         <div className="package-card__badges">
           <span className="package-card__badge package-card__badge--duration">
-            ⏱️ {pkg.duration.split(' / ')[0]}
+            <Clock size={12} style={{ display: 'inline', verticalAlign: 'middle', marginRight: '4px' }} />
+            {pkg.duration.split(' / ')[0]}
           </span>
           <span className="package-card__badge package-card__badge--category">
             {pkg.category}
@@ -20,13 +22,20 @@ export default function PackageCard({ pkg }) {
         <h3 className="package-card__title">{pkg.title}</h3>
         
         <div className="package-card__meta">
-          <span>📍 {pkg.destination}</span>
-          <span>👥 {pkg.groupSize}</span>
+          <span className="package-card__meta-item">
+            <MapPin size={14} /> {pkg.destination}
+          </span>
+          <span className="package-card__meta-item">
+            <Users size={14} /> {pkg.groupSize}
+          </span>
         </div>
         
         <ul className="package-card__highlights">
           {pkg.highlights.slice(0, 2).map((highlight, index) => (
-            <li key={index}>✦ {highlight}</li>
+            <li key={index}>
+              <Sparkles size={13} className="highlight-icon" />
+              <span>{highlight}</span>
+            </li>
           ))}
         </ul>
         
@@ -34,7 +43,7 @@ export default function PackageCard({ pkg }) {
           <div className="package-card__price">
             <span className="package-card__price-label">Starts from</span>
             <span className="package-card__price-value">
-              ₹{pkg.startingPrice ? pkg.startingPrice.toLocaleString('en-IN') : 'Custom'}
+              &#8377;{pkg.startingPrice ? pkg.startingPrice.toLocaleString('en-IN') : 'Custom'}
             </span>
           </div>
           
@@ -43,12 +52,12 @@ export default function PackageCard({ pkg }) {
               Details
             </Link>
             <a
-              href={`https://wa.me/918483835171?text=Hi%20TravelHack!%20I%20want%20to%20know%20more%20about%20the%20${pkg.title}%20package.`}
+              href={`https://wa.me/918483835171?text=${encodeURIComponent(`Hi TravelHack! I want to know more about the ${pkg.title} package.`)}`}
               target="_blank"
               rel="noopener noreferrer"
               className="btn btn--whatsapp btn--sm"
             >
-              Enquire
+              <MessageCircle size={14} /> Enquire
             </a>
           </div>
         </div>

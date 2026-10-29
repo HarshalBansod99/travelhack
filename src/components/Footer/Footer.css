@@ -2,6 +2,7 @@
   background-color: var(--deep-dark);
   color: rgba(255, 255, 255, 0.85);
   position: relative;
+  overflow-x: clip;
 }
 
 .footer__top {
@@ -76,6 +77,8 @@
   color: rgba(255, 255, 255, 0.65);
   font-size: 0.9rem;
   transition: color var(--transition-fast);
+  padding: 2px 0;
+  display: inline-block;
 }
 
 .footer__links-list a:hover {
@@ -111,6 +114,9 @@
   font-size: 0.85rem;
   color: rgba(255, 255, 255, 0.65);
   transition: color var(--transition-fast);
+  padding: 3px 0;
+  display: inline-flex;
+  align-items: center;
 }
 
 .footer__owner-link:hover {
@@ -167,7 +173,7 @@
   }
 
   .footer__bottom {
-    padding: 1.5rem 0 5.5rem; /* clearance for WhatsApp button on mobile */
+    padding: 1.5rem 0 max(5.5rem, calc(4rem + env(safe-area-inset-bottom))); /* clearance for WhatsApp button on mobile */
   }
 
   .footer__bottom-inner {

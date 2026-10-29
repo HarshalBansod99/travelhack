@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import { supabase } from '../lib/supabase';
+import { MessageCircle } from '../components/Icons';
 import './Customize.css';
 
 export default function Customize() {
@@ -159,10 +160,10 @@ export default function Customize() {
                     required
                   >
                     <option value="" disabled>Select a range</option>
-                    <option value="Under ₹15k">Under ₹15,000</option>
-                    <option value="₹15k - ₹25k">₹15,000 - ₹25,000</option>
-                    <option value="₹25k - ₹40k">₹25,000 - ₹40,000</option>
-                    <option value="₹40k+ (Luxury)">₹40,000+ (Premium/Luxury)</option>
+                    <option value="Under ₹15k">Under &#8377;15,000</option>
+                    <option value="₹15k - ₹25k">&#8377;15,000 - &#8377;25,000</option>
+                    <option value="₹25k - ₹40k">&#8377;25,000 - &#8377;40,000</option>
+                    <option value="₹40k+ (Luxury)">&#8377;40,000+ (Premium/Luxury)</option>
                     <option value="Not sure yet">Not sure yet</option>
                   </select>
                 </div>
@@ -172,7 +173,7 @@ export default function Customize() {
                 <label>What's the vibe of this trip?</label>
                 <div className="radio-group">
                   {['Relaxed/Leisure', 'Adventure-heavy', 'Cultural/Sightseeing', 'Party/Nightlife', 'Mix of everything'].map(vibe => (
-                    <label key={vibe} className="radio-label">
+                    <label key={vibe} className={`radio-label ${formData.tripStyle === vibe ? 'radio-label--active' : ''}`}>
                       <input 
                         type="radio" 
                         name="tripStyle" 
@@ -200,7 +201,7 @@ export default function Customize() {
               </div>
 
               <button type="submit" className="btn btn--primary btn--lg submit-btn">
-                Send Request via WhatsApp 💬
+                <MessageCircle size={20} /> Send Request via WhatsApp
               </button>
             </form>
           </div>

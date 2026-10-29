@@ -80,8 +80,9 @@
 html {
   scroll-behavior: smooth;
   -webkit-text-size-adjust: 100%;
-  overflow-x: clip;
+  overflow-x: hidden;
   max-width: 100vw;
+  width: 100%;
 }
 
 body {
@@ -91,9 +92,10 @@ body {
   line-height: 1.6;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  overflow-x: clip;
+  overflow-x: hidden;
   max-width: 100vw;
   width: 100%;
+  position: relative;
 }
 
 #root {
@@ -101,12 +103,17 @@ body {
   min-height: 100vh;
   display: flex;
   flex-direction: column;
-  overflow-x: clip;
+  overflow-x: hidden;
 }
 
 img {
   max-width: 100%;
   height: auto;
+  display: block;
+}
+
+video {
+  max-width: 100%;
   display: block;
 }
 
@@ -120,13 +127,15 @@ button {
   cursor: pointer;
   border: none;
   background: none;
+  touch-action: manipulation;
 }
 
 input,
 select,
 textarea {
   font-family: inherit;
-  font-size: inherit;
+  font-size: 16px; /* Prevents auto-zoom on iOS Safari */
+  box-sizing: border-box;
 }
 
 ul, ol {
@@ -196,6 +205,7 @@ p {
 .btn {
   display: inline-flex;
   align-items: center;
+  justify-content: center;
   gap: var(--space-sm);
   padding: 0.75rem 1.75rem;
   border-radius: 50px;
@@ -207,6 +217,8 @@ p {
   position: relative;
   overflow: hidden;
   text-decoration: none;
+  touch-action: manipulation;
+  user-select: none;
 }
 
 .btn--primary {
@@ -230,34 +242,6 @@ p {
   color: white;
   transform: translateY(-3px);
   box-shadow: 0 4px 14px rgba(212, 118, 78, 0.25);
-}
-
-.btn--hero-browse {
-  background: rgba(255, 255, 255, 0.15);
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
-  border: 2px solid rgba(255, 255, 255, 0.9);
-  color: #ffffff;
-  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
-  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
-}
-.btn--hero-browse svg {
-  color: #ffffff;
-  stroke: #ffffff;
-  transition: transform var(--transition-fast);
-}
-.btn--hero-browse:hover {
-  background-color: #ffffff;
-  color: var(--charcoal);
-  border-color: #ffffff;
-  transform: translateY(-3px);
-  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
-  text-shadow: none;
-}
-.btn--hero-browse:hover svg {
-  color: var(--charcoal);
-  stroke: var(--charcoal);
-  transform: translateX(4px);
 }
 
 .btn--whatsapp {
@@ -301,6 +285,7 @@ p {
 /* ---------- Scrollbar ---------- */
 ::-webkit-scrollbar {
   width: 8px;
+  height: 8px;
 }
 ::-webkit-scrollbar-track {
   background: #f1f1f1;
