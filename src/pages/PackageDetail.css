@@ -8,75 +8,10 @@
   min-height: 100vh;
 }
 
-/* ---- Hero Header & Gallery ---- */
+/* ---- Hero Header ---- */
 .detail-header {
   background-color: var(--charcoal);
   color: white;
-}
-
-.detail-header__gallery {
-  position: relative;
-  width: 100%;
-  overflow: hidden;
-}
-
-.detail-header__main-img {
-  width: 100%;
-  height: 55vh;
-  min-height: 360px;
-  max-height: 560px;
-}
-
-.detail-header__main-img img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-}
-
-/* Thumbnail strip — inside the hero image, bottom-right, with safe inset */
-.detail-header__thumbs {
-  position: absolute;
-  bottom: 20px;
-  right: 20px;
-  display: flex;
-  gap: 10px;
-  z-index: 10;
-  background: rgba(0, 0, 0, 0.45);
-  backdrop-filter: blur(8px);
-  -webkit-backdrop-filter: blur(8px);
-  padding: 6px;
-  border-radius: 10px;
-  max-width: calc(100% - 40px);
-  overflow-x: auto;
-  -webkit-overflow-scrolling: touch;
-}
-
-.detail-header__thumb {
-  width: 72px;
-  height: 52px;
-  padding: 0;
-  border: 2px solid transparent;
-  border-radius: 6px;
-  overflow: hidden;
-  cursor: pointer;
-  transition: all 0.2s ease;
-  opacity: 0.7;
-  flex-shrink: 0;
-}
-
-.detail-header__thumb img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-}
-
-.detail-header__thumb:hover {
-  opacity: 1;
-}
-
-.detail-header__thumb.active {
-  border-color: var(--orange-accent);
-  opacity: 1;
 }
 
 /* ---- Hero info block ---- */
@@ -487,8 +422,8 @@
 
 .related-card img {
   width: 100%;
-  height: 180px;
-  object-fit: cover;
+  height: auto;
+  display: block;
 }
 
 .related-card__info {
@@ -536,28 +471,6 @@
 }
 
 @media (max-width: 600px) {
-  .detail-header__main-img {
-    height: 35vh;
-    min-height: 240px;
-  }
-
-  .detail-header__thumbs {
-    position: static;
-    background: rgba(0, 0, 0, 0.85);
-    backdrop-filter: none;
-    -webkit-backdrop-filter: none;
-    padding: 8px 12px;
-    gap: 8px;
-    max-width: 100%;
-    border-radius: 0;
-    justify-content: flex-start;
-  }
-
-  .detail-header__thumb {
-    width: 60px;
-    height: 44px;
-  }
-
   .detail-header__info {
     padding: var(--space-xl) var(--space-md) var(--space-lg);
   }

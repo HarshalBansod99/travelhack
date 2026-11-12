@@ -6,7 +6,7 @@ export const destinations = [
     startingPrice: 8999,
     days: '7',
     region: 'North India',
-    image: '/images/Hidimba Temple/SUR_0482.JPG',
+    image: '/images/SUR_0469.JPG',
   },
   {
     id: 'solang-valley',
@@ -15,7 +15,7 @@ export const destinations = [
     startingPrice: 8999,
     days: '7',
     region: 'North India',
-    image: '/images/Atal Tunnel/SUR_0168.JPG',
+    image: '/images/SUR_0130.JPG',
   },
   {
     id: 'kasol',
@@ -24,7 +24,7 @@ export const destinations = [
     startingPrice: 8999,
     days: '7',
     region: 'North India',
-    image: '/images/General Photos/DSC_0116.JPG',
+    image: '/images/SUR_0299.JPG',
   },
   {
     id: 'manikaran',
@@ -33,6 +33,6 @@ export const destinations = [
     startingPrice: 8999,
     days: '7',
     region: 'North India',
-    image: '/images/General Photos/DSC_0138.JPG',
+    image: '/images/SUR_0323.JPG',
   },
 ];

@@ -1,5 +1,6 @@
 
 
+
 export const packages = [
   {
     id: 1,
@@ -20,12 +21,12 @@ export const packages = [
       'Jogini Waterfall & Vashisht Temple sightseeing',
     ],
     description: 'From the snow-capped peaks of Solang Valley to the hippie vibes of Kasol — this trip packs seven days of mountains, temples, adventure, and campfire nights. Starting from Nagpur via Delhi, explore Manali\'s iconic Hadimba Devi Temple, Mall Road, and Old Manali cafés. Take on snow activities at Solang Valley, cross through the engineering marvel of Atal Tunnel, and end with riverside camping at Kasol complete with bonfire, DJ night, and a visit to the sacred Manikaran Sahib Gurudwara.',
-    image: '/images/Atal Tunnel/SUR_0096.JPG',
+    image: '/images/SUR_0273.JPG',
     gallery: [
-      '/images/Atal Tunnel/SUR_0167.JPG',
-      '/images/Hidimba Temple/SUR_0495.JPG',
-      '/images/General Photos/DSC_0165.JPG',
-      '/images/Atal Tunnel/SUR_0251.JPG',
+      '/images/SUR_0130.JPG',
+      '/images/SUR_0275.JPG',
+      '/images/SUR_0311.JPG',
+      '/images/SUR_0469.JPG',
     ],
     itinerary: [
       {
@@ -103,7 +104,7 @@ export const packages = [
 
 export const categories = [
   { id: 'all', label: 'All Trips', icon: 'Globe' },
-  { id: 'Group', label: 'Group Tours', icon: 'Users', description: 'Travel with a crew, make new friends', image: '/images/General Photos/DSC_0167.JPG' },
+  { id: 'Group', label: 'Group Tours', icon: 'Users', description: 'Travel with a crew, make new friends', image: '/images/SUR_0356.JPG' },
 ];
 
 export const regions = [

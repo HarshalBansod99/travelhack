@@ -1,5 +1,6 @@
 
 
+
 export const testimonials = [
   {
     id: 1,
@@ -8,7 +9,7 @@ export const testimonials = [
     trip: 'Manali – Solang, Kasol Trip',
     rating: 5,
     quote: 'Manali → Solang → Kasol → Manikaran. Four completely different experiences in one trip. The snow at Solang was unreal, and the bonfire night at Kasol with DJ music under the stars — that was the highlight. TravelHack handled every detail from Nagpur to Nagpur. It felt personal, not like a commercial tour.',
-    image: '/images/Atal Tunnel/SUR_0252.JPG',
+    image: '/images/SUR_0273.JPG',
   },
   {
     id: 2,
@@ -17,7 +18,7 @@ export const testimonials = [
     trip: 'Manali Group Tour',
     rating: 5,
     quote: 'I went solo from Nagpur and came back with 12 new friends. The Jogini Waterfall trek was breathtaking, and Old Manali cafés have a vibe you can\'t find anywhere else. The 3-star hotel in Manali was clean and comfortable. Best budget trip I\'ve ever been on — worth every rupee of ₹8,999.',
-    image: '/images/General Photos/DSC_0116.JPG',
+    image: '/images/SUR_0239.JPG',
   },
   {
     id: 3,
@@ -26,7 +27,7 @@ export const testimonials = [
     trip: 'Manali – Kasol Adventure',
     rating: 5,
     quote: 'The Atal Tunnel was an engineering marvel — you drive through the mountain and come out to a completely different landscape at Sissu. River rafting at Kullu was the adrenaline rush we needed. Camping at Kasol beside the Parvati River with a bonfire and music — we didn\'t want to come back.',
-    image: '/images/General Photos/DSC_0138.JPG',
+    image: '/images/SUR_0330.JPG',
   },
   {
     id: 4,
@@ -35,7 +36,7 @@ export const testimonials = [
     trip: 'Manali – Manikaran Trip',
     rating: 5,
     quote: 'Hadimba Devi Temple surrounded by deodars, the snow-covered Solang Valley, and then the spiritual peace of Manikaran Sahib — this trip had everything. The hot water spring at Manikaran is something you have to experience. The trip captain was always available and the 24×7 support was genuinely helpful.',
-    image: '/images/General Photos/DSC_0165.JPG',
+    image: '/images/SUR_0356.JPG',
   },
   {
     id: 5,
@@ -44,7 +45,7 @@ export const testimonials = [
     trip: 'Manali – Solang Valley Trip',
     rating: 4,
     quote: 'Mall Road in Manali is perfect for evening walks, and Vashisht Temple has hot springs that are incredibly relaxing. The DJ night at Kasol camps was so much fun. Only tip — carry warm clothes even in summer because Solang Valley gets really cold. TravelHack planned it all so smoothly.',
-    image: '/images/General Photos/DSC_0167.JPG',
+    image: '/images/SUR_0311.JPG',
   },
   {
     id: 6,
@@ -53,6 +54,6 @@ export const testimonials = [
     trip: 'Manali – Kasol Group Trip',
     rating: 5,
     quote: 'Took our college batch of 15 people on this trip. From the train journey excitement to the Kasol camping night — every moment was a memory. Van Vihar in Manali is so peaceful, and the Nature Park in Kasol beside the river is Instagram-worthy. Transparent pricing, no hidden costs. 10/10.',
-    image: '/images/Hidimba Temple/SUR_0498.JPG',
+    image: '/images/SUR_0469.JPG',
   },
 ];

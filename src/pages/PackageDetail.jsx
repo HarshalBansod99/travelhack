@@ -12,7 +12,6 @@ export default function PackageDetail() {
   const { slug } = useParams();
   const navigate = useNavigate();
   const [activeDay, setActiveDay] = useState(1);
-  const [currentImage, setCurrentImage] = useState(0);
 
   const pkg = packages.find(p => p.slug === slug);
 
@@ -47,26 +46,8 @@ export default function PackageDetail() {
 
   return (
     <main className="package-detail">
-      {/* Header / Gallery */}
+      {/* Header / Info */}
       <section className="detail-header">
-        <div className="detail-header__gallery">
-          <div className="detail-header__main-img">
-            <img src={pkg.gallery[currentImage]} alt={`${pkg.title} view ${currentImage + 1}`} />
-          </div>
-          <div className="detail-header__thumbs">
-            {pkg.gallery.map((img, i) => (
-              <button 
-                key={i} 
-                className={`detail-header__thumb ${i === currentImage ? 'active' : ''}`}
-                onClick={() => setCurrentImage(i)}
-                aria-label={`View photo ${i + 1}`}
-              >
-                <img src={img} alt={`Thumbnail ${i + 1}`} />
-              </button>
-            ))}
-          </div>
-        </div>
-
         <div className="detail-header__info">
           <div className="detail-header__meta">
             <span className="badge badge--category">{pkg.category}</span>

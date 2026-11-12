@@ -5,8 +5,7 @@ import './PackageCard.css';
 export default function PackageCard({ pkg }) {
   return (
     <div className="package-card" id={`pkg-${pkg.slug}`}>
-      <div className="package-card__img-wrap">
-        <img src={pkg.image} alt={pkg.title} loading="lazy" />
+      <div className="package-card__content">
         <div className="package-card__badges">
           <span className="package-card__badge package-card__badge--duration">
             <Clock size={12} style={{ display: 'inline', verticalAlign: 'middle', marginRight: '4px' }} />
@@ -16,9 +15,7 @@ export default function PackageCard({ pkg }) {
             {pkg.category}
           </span>
         </div>
-      </div>
-      
-      <div className="package-card__content">
+
         <h3 className="package-card__title">{pkg.title}</h3>
         
         <div className="package-card__meta">
@@ -31,7 +28,7 @@ export default function PackageCard({ pkg }) {
         </div>
         
         <ul className="package-card__highlights">
-          {pkg.highlights.slice(0, 2).map((highlight, index) => (
+          {pkg.highlights.slice(0, 3).map((highlight, index) => (
             <li key={index}>
               <Sparkles size={13} className="highlight-icon" />
               <span>{highlight}</span>

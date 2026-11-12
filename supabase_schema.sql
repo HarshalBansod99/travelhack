@@ -47,3 +47,31 @@ ALTER TABLE package_enquiries ENABLE ROW LEVEL SECURITY;
 CREATE POLICY "Allow anonymous inserts" ON package_enquiries FOR INSERT WITH CHECK (true);
 CREATE POLICY "Allow anonymous reads" ON package_enquiries FOR SELECT USING (true);
 
+
+-- 4. Admin Authentication
+-- You have TWO flexible options to store admin credentials in Supabase:
+--
+-- OPTION A (Recommended - Official Supabase Auth):
+-- Go to your Supabase Dashboard:
+-- 1. Click 'Authentication' in the left sidebar.
+-- 2. Click 'Users' -> 'Add User' -> 'Create User'.
+-- 3. Enter your admin Email and Password (e.g. admin@travelhack.in).
+-- 4. That's it! Log in directly on the /admin page with those credentials.
+--
+-- OPTION B (Table-based admin users):
+-- If you prefer managing credentials directly in a database table, run this SQL:
+
+CREATE TABLE IF NOT EXISTS admin_users (
+  id uuid DEFAULT gen_random_uuid() PRIMARY KEY,
+  created_at timestamp with time zone DEFAULT timezone('utc'::text, now()) NOT NULL,
+  username text UNIQUE NOT NULL,
+  email text UNIQUE,
+  password text NOT NULL
+);
+
+ALTER TABLE admin_users ENABLE ROW LEVEL SECURITY;
+CREATE POLICY "Allow public read for admin authentication" ON admin_users FOR SELECT USING (true);
+
+-- Insert your initial admin user (replace with your desired credentials):
+-- INSERT INTO admin_users (username, email, password)
+-- VALUES ('admin', 'admin@travelhack.in', 'YourSecurePasswordHere');

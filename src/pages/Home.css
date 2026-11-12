@@ -305,7 +305,7 @@
 .exp-card__img-wrap {
   position: relative;
   width: 100%;
-  aspect-ratio: 16/10;
+  aspect-ratio: 4/5;
   overflow: hidden;
   background-color: #2a2a2a;
 }
@@ -941,19 +941,10 @@
 .gallery-strip__masonry {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
-  grid-auto-rows: 220px;
   gap: var(--space-md);
   padding: 0 var(--space-lg);
   max-width: var(--max-width);
   margin: var(--space-2xl) auto 0;
-}
-
-.gallery-strip__masonry > :nth-child(1) {
-  grid-row: span 2;
-}
-
-.gallery-strip__masonry > :nth-child(4) {
-  grid-row: span 2;
 }
 
 .gallery-strip__item {
@@ -961,12 +952,16 @@
   border-radius: var(--border-radius-lg);
   overflow: hidden;
   cursor: pointer;
+  background-color: var(--sand);
+  aspect-ratio: 3/4;
 }
 
 .gallery-strip__item img {
   width: 100%;
   height: 100%;
   object-fit: cover;
+  object-position: center;
+  display: block;
   transition: transform 0.6s cubic-bezier(0.25, 1, 0.5, 1);
 }
 
@@ -977,10 +972,10 @@
 /* ===== CTA BANNER ===== */
 .cta-banner {
   position: relative;
-  padding: var(--space-4xl) 0;
+  padding: 6rem 1.5rem;
   text-align: center;
   overflow: hidden;
-  min-height: 400px;
+  min-height: 440px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -990,77 +985,113 @@
   position: absolute;
   inset: 0;
   background-size: cover;
-  background-position: center;
+  background-position: center 35%;
   z-index: 0;
+  transform: scale(1.02);
 }
 
 .cta-banner__overlay {
   position: absolute;
   inset: 0;
-  background: linear-gradient(to bottom, rgba(0,0,0,0.55), rgba(0,0,0,0.8));
+  background: radial-gradient(circle at center, rgba(15, 18, 24, 0.72) 0%, rgba(10, 12, 16, 0.92) 100%);
   z-index: 1;
 }
 
 .cta-banner__content {
   position: relative;
   z-index: 2;
-  max-width: 650px;
+  max-width: 620px;
   margin: 0 auto;
 }
 
 .cta-banner__label {
   font-family: var(--font-accent);
-  font-size: 1.3rem;
+  font-size: 1.4rem;
   color: var(--gold-light);
   display: block;
-  margin-bottom: var(--space-sm);
+  margin-bottom: 0.5rem;
 }
 
 .cta-banner__content h2 {
   color: white;
-  margin-bottom: var(--space-md);
-  font-size: clamp(1.8rem, 4vw, 2.5rem);
+  margin-bottom: 1rem;
+  font-size: clamp(2rem, 5vw, 2.75rem);
+  font-weight: 700;
+  line-height: 1.2;
 }
 
-.cta-banner__content p {
-  color: rgba(255, 255, 255, 0.92);
-  font-size: 1.1rem;
-  margin-bottom: var(--space-lg);
-}
-
-.cta-banner__contact-numbers {
-  display: flex;
-  justify-content: center;
-  gap: var(--space-md);
-  flex-wrap: wrap;
-  margin-bottom: var(--space-2xl);
-}
-
-.cta-banner__phone {
-  color: rgba(255, 255, 255, 0.95);
-  font-size: 0.95rem;
-  font-weight: 600;
-  text-decoration: none;
-  padding: 0.45rem 1.1rem;
-  border: 1px solid rgba(255, 255, 255, 0.35);
-  border-radius: 50px;
-  transition: all var(--transition-base);
-  background: rgba(255, 255, 255, 0.12);
-  display: inline-flex;
-  align-items: center;
-}
-
-.cta-banner__phone:hover {
-  background: rgba(255, 255, 255, 0.25);
-  border-color: rgba(255, 255, 255, 0.7);
-  transform: translateY(-2px);
+.cta-banner__subtitle {
+  color: rgba(255, 255, 255, 0.88);
+  font-size: clamp(0.95rem, 2vw, 1.1rem);
+  line-height: 1.65;
+  margin-bottom: 2.25rem;
 }
 
 .cta-banner__buttons {
   display: flex;
   justify-content: center;
-  gap: var(--space-md);
+  align-items: center;
+  gap: 1rem;
   flex-wrap: wrap;
+  margin-bottom: 2rem;
+}
+
+.cta-banner__btn-main {
+  min-width: 220px;
+  padding: 0.95rem 2rem;
+  font-size: 1.05rem;
+}
+
+.cta-banner__btn-alt {
+  padding: 0.95rem 1.75rem;
+  font-size: 0.95rem;
+}
+
+.cta-banner__quick-contact {
+  display: inline-flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+  padding: 0.75rem 1.5rem;
+  background: rgba(255, 255, 255, 0.08);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.16);
+  border-radius: 50px;
+}
+
+.cta-banner__call-note {
+  font-size: 0.8rem;
+  color: rgba(255, 255, 255, 0.65);
+  letter-spacing: 0.02em;
+}
+
+.cta-banner__phone-row {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.cta-banner__phone-link {
+  color: rgba(255, 255, 255, 0.95);
+  font-size: 0.88rem;
+  font-weight: 600;
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  transition: color var(--transition-fast);
+}
+
+.cta-banner__phone-link:hover {
+  color: var(--gold-light);
+}
+
+.cta-banner__phone-sep {
+  color: rgba(255, 255, 255, 0.4);
+  font-size: 0.8rem;
 }
 
 /* ===== BUTTON VARIANTS ===== */
@@ -1111,12 +1142,6 @@
 
   .gallery-strip__masonry {
     grid-template-columns: repeat(2, 1fr);
-    grid-auto-rows: 200px;
-  }
-
-  .gallery-strip__masonry > :nth-child(1),
-  .gallery-strip__masonry > :nth-child(4) {
-    grid-row: span 1;
   }
 }
 
@@ -1230,21 +1255,11 @@
 
   .cta-banner {
     min-height: auto;
-    padding: var(--space-3xl) 0;
-  }
-
-  .cta-banner__contact-numbers {
-    gap: var(--space-sm);
-  }
-
-  .cta-banner__phone {
-    font-size: 0.85rem;
-    padding: 0.35rem 0.85rem;
+    padding: 5rem 1.5rem;
   }
 
   .gallery-strip__masonry {
     grid-template-columns: repeat(2, 1fr);
-    grid-auto-rows: 180px;
   }
 
   .terms-card {
@@ -1307,7 +1322,7 @@
   }
 
   .exp-card__img-wrap {
-    aspect-ratio: 16/9;
+    aspect-ratio: 16/10;
   }
 
   .video-reels-grid {
@@ -1346,15 +1361,30 @@
   }
 
   .gallery-strip__masonry {
-    grid-template-columns: 1fr;
-    grid-auto-rows: 210px;
+    grid-template-columns: repeat(2, 1fr);
     gap: var(--space-sm);
     padding: 0 var(--space-md);
+  }
+
+  .cta-banner {
+    padding: 4.5rem 1.25rem 4rem;
+  }
+
+  .cta-banner__content h2 {
+    font-size: 1.75rem;
+    margin-bottom: 0.75rem;
+  }
+
+  .cta-banner__subtitle {
+    font-size: 0.92rem;
+    margin-bottom: 1.75rem;
   }
 
   .cta-banner__buttons {
     flex-direction: column;
     align-items: center;
+    gap: 0.75rem;
+    margin-bottom: 1.5rem;
   }
 
   .cta-banner__buttons .btn {
@@ -1363,16 +1393,20 @@
     justify-content: center;
   }
 
-  .cta-banner__contact-numbers {
-    flex-direction: column;
-    align-items: center;
-    gap: var(--space-xs);
+  .cta-banner__quick-contact {
+    border-radius: 16px;
+    padding: 0.75rem 1rem;
+    width: 100%;
+    max-width: 320px;
   }
 
-  .cta-banner__phone {
-    width: 100%;
-    max-width: 260px;
-    justify-content: center;
+  .cta-banner__phone-row {
+    flex-direction: column;
+    gap: 6px;
+  }
+
+  .cta-banner__phone-sep {
+    display: none;
   }
 
   .pricing-cards {

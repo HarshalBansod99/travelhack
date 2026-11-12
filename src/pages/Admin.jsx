@@ -6,7 +6,11 @@ import './Admin.css';
 
 export default function Admin() {
   const [isAuthenticated, setIsAuthenticated] = useState(false);
+  const [userId, setUserId] = useState('');
   const [password, setPassword] = useState('');
+  const [currentUser, setCurrentUser] = useState(null);
+  const [authLoading, setAuthLoading] = useState(false);
+  const [loginError, setLoginError] = useState('');
   const [activeTab, setActiveTab] = useState('custom');
   const [data, setData] = useState({
     customTrips: [],
@@ -15,14 +19,124 @@ export default function Admin() {
   });
   const [loading, setLoading] = useState(false);
 
-  const handleLogin = (e) => {
+  // Check active Supabase Auth session or persistent admin session on mount
+  useEffect(() => {
+    const checkSession = async () => {
+      try {
+        const { data: { session } } = await supabase.auth.getSession();
+        if (session?.user) {
+          setIsAuthenticated(true);
+          setCurrentUser(session.user.email);
+          fetchData();
+          return;
+        }
+
+        // Fallback: Check stored session in sessionStorage
+        const storedAdmin = sessionStorage.getItem('travelhack_admin_session');
+        if (storedAdmin) {
+          setIsAuthenticated(true);
+          setCurrentUser(storedAdmin);
+          fetchData();
+        }
+      } catch (err) {
+        console.error('Session check error:', err);
+      }
+    };
+
+    checkSession();
+
+    // Listen for Supabase auth state changes
+    const { data: { subscription } } = supabase.auth.onAuthStateChange((_event, session) => {
+      if (session?.user) {
+        setIsAuthenticated(true);
+        setCurrentUser(session.user.email);
+      }
+    });
+
+    return () => subscription?.unsubscribe();
+  }, []);
+
+  const handleLogin = async (e) => {
     e.preventDefault();
-    if (password === 'travelhack2026') {
-      setIsAuthenticated(true);
-      fetchData();
-    } else {
-      alert('Incorrect password');
+    setLoginError('');
+    setAuthLoading(true);
+
+    const trimmedUser = userId.trim();
+    let authSuccess = false;
+
+    try {
+      // 1. Try Supabase Auth (Official secure authentication)
+      const emailToTry = trimmedUser.includes('@') ? trimmedUser : `${trimmedUser}@travelhack.in`;
+      
+      const { data: authData, error: authError } = await supabase.auth.signInWithPassword({
+        email: emailToTry,
+        password: password
+      });
+
+      if (!authError && authData?.session) {
+        authSuccess = true;
+        setIsAuthenticated(true);
+        setCurrentUser(authData.user.email);
+        sessionStorage.setItem('travelhack_admin_session', authData.user.email);
+        fetchData();
+      } else {
+        // Also try direct user input as email if it had no @
+        if (!trimmedUser.includes('@')) {
+          const { data: directAuth, error: directErr } = await supabase.auth.signInWithPassword({
+            email: trimmedUser,
+            password: password
+          });
+
+          if (!directErr && directAuth?.session) {
+            authSuccess = true;
+            setIsAuthenticated(true);
+            setCurrentUser(directAuth.user.email);
+            sessionStorage.setItem('travelhack_admin_session', directAuth.user.email);
+            fetchData();
+          }
+        }
+
+        // 2. Fallback: Query admin_users table in Supabase
+        if (!authSuccess) {
+          const { data: tableUser, error: tableErr } = await supabase
+            .from('admin_users')
+            .select('*')
+            .or(`username.eq.${trimmedUser},email.eq.${trimmedUser}`)
+            .eq('password', password)
+            .maybeSingle();
+
+          if (!tableErr && tableUser) {
+            authSuccess = true;
+            setIsAuthenticated(true);
+            const userIdentifier = tableUser.username || tableUser.email || trimmedUser;
+            setCurrentUser(userIdentifier);
+            sessionStorage.setItem('travelhack_admin_session', userIdentifier);
+            fetchData();
+          }
+        }
+      }
+
+      if (!authSuccess) {
+        setLoginError('Invalid User ID or password. Please verify your credentials in Supabase.');
+      }
+    } catch (err) {
+      console.error('Login error:', err);
+      setLoginError(err.message || 'An error occurred during authentication.');
+    } finally {
+      setAuthLoading(false);
     }
+  };
+
+  const handleLogout = async () => {
+    try {
+      await supabase.auth.signOut();
+    } catch (err) {
+      console.error('Error logging out from Supabase:', err);
+    }
+    sessionStorage.removeItem('travelhack_admin_session');
+    setIsAuthenticated(false);
+    setCurrentUser(null);
+    setPassword('');
   };
 
   const fetchData = async () => {
@@ -53,17 +167,35 @@ export default function Admin() {
           <div className="admin-login-header">
             <Globe size={40} className="admin-login-icon" />
             <h2>Admin Portal</h2>
-            <p>Enter your password to access the dashboard</p>
+            <p>Sign in with your Supabase credentials to access the dashboard</p>
           </div>
+
+          {loginError && (
+            <div className="admin-login-error">
+              {loginError}
+            </div>
+          )}
+
           <form onSubmit={handleLogin} className="admin-login-form">
+            <input
+              type="text"
+              placeholder="User ID or Email"
+              value={userId}
+              onChange={(e) => setUserId(e.target.value)}
+              autoComplete="username"
+              required
+            />
             <input
               type="password"
               placeholder="Password"
               value={password}
               onChange={(e) => setPassword(e.target.value)}
+              autoComplete="current-password"
               required
             />
-            <button type="submit" className="btn btn--primary">Access Dashboard</button>
+            <button type="submit" className="btn btn--primary" disabled={authLoading}>
+              {authLoading ? 'Verifying...' : 'Access Dashboard'}
+            </button>
           </form>
           <Link to="/" className="back-to-home">&larr; Back to Site</Link>
         </div>
@@ -78,14 +210,17 @@ export default function Admin() {
         <div className="admin-sidebar-header">
           <div className="admin-sidebar-brand">
             <Globe size={28} className="admin-logo" />
-            <h2>TravelHack</h2>
+            <div>
+              <h2>TravelHack</h2>
+              {currentUser && <span className="admin-user-tag">{currentUser}</span>}
+            </div>
             <span className="admin-badge">Admin</span>
           </div>
           <div className="admin-mobile-actions">
             <Link to="/" className="btn btn--sm btn--glass" title="View Site">
               <Home size={16} />
             </Link>
-            <button className="btn btn--sm logout-btn-compact" onClick={() => setIsAuthenticated(false)} title="Logout">
+            <button className="btn btn--sm logout-btn-compact" onClick={handleLogout} title="Logout">
               Logout
             </button>
           </div>
@@ -122,8 +257,8 @@ export default function Admin() {
             <Home size={18} />
             <span>View Live Site</span>
           </Link>
-          <button className="admin-nav-item logout-btn" onClick={() => setIsAuthenticated(false)}>
-            <Users size={18} />
+          <button className="admin-nav-item logout-btn" onClick={handleLogout}>
+            <LogOut size={18} />
             <span>Logout</span>
           </button>
         </div>

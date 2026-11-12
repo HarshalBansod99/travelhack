@@ -28,15 +28,15 @@ const heroVideoUrl = 'https://assets.mixkit.co/videos/preview/mixkit-aerial-view
 const experienceHighlights = [
   {
     image: 'https://images.unsplash.com/photo-1626621341517-bbf3d9990a23?w=800&q=80',
-    fallback: '/images/Atal Tunnel/SUR_0168.JPG',
+    fallback: '/images/SUR_0130.JPG',
     video: 'https://assets.mixkit.co/videos/preview/mixkit-aerial-view-of-snow-capped-mountains-41275-large.mp4',
     tag: 'Snow & Atal Tunnel',
     title: 'Solang Valley',
     desc: 'Skiing, tube slides, zorbing, and the world-famous Atal Tunnel transit.',
   },
   {
-    image: '/images/Hidimba Temple/SUR_0482.JPG',
-    fallback: 'https://images.unsplash.com/photo-1605649487212-47bdab064df7?w=800&q=80',
+    image: 'https://images.unsplash.com/photo-1605649487212-47bdab064df7?w=800&q=80',
+    fallback: '/images/SUR_0469.JPG',
     video: 'https://assets.mixkit.co/videos/preview/mixkit-curving-road-in-a-pine-forest-41719-large.mp4',
     tag: 'Heritage & Forest',
     title: 'Hadimba Temple',
@@ -44,7 +44,7 @@ const experienceHighlights = [
   },
   {
     image: 'https://images.unsplash.com/photo-1517851128435-29bcc8f5d581?w=800&q=80',
-    fallback: '/images/General Photos/DSC_0116.JPG',
+    fallback: '/images/SUR_0299.JPG',
     video: 'https://assets.mixkit.co/videos/preview/mixkit-bonfire-burning-in-the-night-42880-large.mp4',
     tag: 'Riverside Vibe',
     title: 'Kasol Camping',
@@ -52,7 +52,7 @@ const experienceHighlights = [
   },
   {
     image: 'https://images.unsplash.com/photo-1470225620780-dba8ba36b745?w=800&q=80',
-    fallback: 'https://images.unsplash.com/photo-1516450360452-9312f5e86fc7?w=800&q=80',
+    fallback: '/images/SUR_0236.JPG',
     video: 'https://assets.mixkit.co/videos/preview/mixkit-colorful-lights-in-a-party-or-club-41208-large.mp4',
     tag: 'Music & Stars',
     title: 'DJ Night',
@@ -60,15 +60,15 @@ const experienceHighlights = [
   },
   {
     image: 'https://images.unsplash.com/photo-1508166466920-f65aa51f727c?w=800&q=80',
-    fallback: 'https://images.unsplash.com/photo-1544551763-46a013bb70d5?w=800&q=80',
+    fallback: '/images/SUR_0237.JPG',
     video: 'https://assets.mixkit.co/videos/preview/mixkit-river-flowing-through-the-forest-41718-large.mp4',
     tag: 'Kullu Adventure',
     title: 'River Rafting',
     desc: 'Adrenaline-pumping white water rafting through the wild rapids of the Beas river.',
   },
   {
-    image: '/images/General Photos/DSC_0138.JPG',
-    fallback: 'https://images.unsplash.com/photo-1596176530529-78163a4f7af2?w=800&q=80',
+    image: 'https://images.unsplash.com/photo-1596176530529-78163a4f7af2?w=800&q=80',
+    fallback: '/images/SUR_0323.JPG',
     video: 'https://assets.mixkit.co/videos/preview/mixkit-river-flowing-through-the-forest-41718-large.mp4',
     tag: 'Sacred Healing',
     title: 'Manikaran Springs',
@@ -163,7 +163,7 @@ export default function Home() {
     }
   }, []);
 
-  const whatsappMessage = encodeURIComponent('Hi TravelHack! I\'m interested in the Manali – Solang, Atal Tunnel, Kasol, Manikaran trip. Can we discuss dates and availability?');
+  const whatsappMessage = encodeURIComponent('Hi TravelHack! I\'m interested in the Manali \u2013 Solang, Atal Tunnel, Kasol, Manikaran trip. Can we discuss dates and availability?');
 
   return (
     <main className="home">
@@ -283,7 +283,7 @@ export default function Home() {
         </div>
       </section>
 
-      {/* ===== EXPERIENCE HIGHLIGHTS — REPLACED EMOJIS WITH REAL DESTINATION PHOTOS ===== */}
+      {/* ===== EXPERIENCE HIGHLIGHTS — REAL DESTINATION PHOTOS ===== */}
       <section className="section experience-highlights" id="highlights">
         <div className="container">
           <AnimatedSection>
@@ -412,7 +412,7 @@ export default function Home() {
                   >
                     <div className="timeline-item__day-badge">Day {day.day}</div>
                     <h3 className="timeline-item__title">{day.title}</h3>
-                    <span className="timeline-item__toggle">{activeDay === day.day ? '−' : '+'}</span>
+                    <span className="timeline-item__toggle">{activeDay === day.day ? '\u2212' : '+'}</span>
                   </button>
                   <div className={`timeline-item__content ${activeDay === day.day ? 'timeline-item__content--open' : ''}`}>
                     <p>{day.description}</p>
@@ -573,31 +573,20 @@ export default function Home() {
 
       {/* ===== CTA BANNER ===== */}
       <section className="cta-banner" id="cta-banner">
-        <div className="cta-banner__bg" style={{ backgroundImage: `url('/images/Atal Tunnel/SUR_0096.JPG')` }} />
+        <div className="cta-banner__bg" style={{ backgroundImage: `url('/images/SUR_0275.JPG')` }} />
         <div className="cta-banner__overlay" />
         <div className="cta-banner__content container">
           <AnimatedSection>
             <span className="cta-banner__label">ready for manali?</span>
             <h2>Book Your Manali Adventure Now</h2>
-            <p>Starting at just &#8377;8,999/person. Message us on WhatsApp — no forms, no waiting.</p>
-            <div className="cta-banner__contact-numbers">
-              <a href="tel:+918483835171" className="cta-banner__phone">
-                <Phone size={14} style={{ display: 'inline', verticalAlign: 'middle', marginRight: '4px' }} />
-                8483835171
-              </a>
-              <a href="tel:+917798664788" className="cta-banner__phone">
-                <Phone size={14} style={{ display: 'inline', verticalAlign: 'middle', marginRight: '4px' }} />
-                7798664788
-              </a>
-              <a href="tel:+919359918573" className="cta-banner__phone">
-                <Phone size={14} style={{ display: 'inline', verticalAlign: 'middle', marginRight: '4px' }} />
-                9359918573
-              </a>
-            </div>
+            <p className="cta-banner__subtitle">
+              Starting at just &#8377;8,999/person. Direct WhatsApp booking — zero waiting, zero forms.
+            </p>
+
             <div className="cta-banner__buttons">
               <a
                 href={`https://wa.me/918483835171?text=${whatsappMessage}`}
-                className="btn btn--warm btn--lg"
+                className="btn btn--warm btn--lg cta-banner__btn-main"
                 target="_blank"
                 rel="noopener noreferrer"
               >
@@ -611,6 +600,19 @@ export default function Home() {
               >
                 Follow @travelhack4 <ArrowRight size={18} />
               </a>
+            </div>
+
+            <div className="cta-banner__quick-contact">
+              <span className="cta-banner__call-note">Prefer a quick call?</span>
+              <div className="cta-banner__phone-row">
+                <a href="tel:+918483835171" className="cta-banner__phone-link">
+                  <Phone size={13} /> Harshal: +91 84838 35171
+                </a>
+                <span className="cta-banner__phone-sep">&bull;</span>
+                <a href="tel:+917798664788" className="cta-banner__phone-link">
+                  <Phone size={13} /> Nikhil: +91 77986 64788
+                </a>
+              </div>
             </div>
           </AnimatedSection>
         </div>

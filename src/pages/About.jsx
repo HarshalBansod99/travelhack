@@ -36,8 +36,8 @@ export default function About() {
             </p>
           </div>
           <div className="about-story__images">
-            <img src="/images/Atal Tunnel/SUR_0252.JPG" alt="Travel group photo at Atal Tunnel" className="about-img-1" loading="lazy" />
-            <img src="/images/Hidimba Temple/SUR_0482.JPG" alt="Hidimba Temple in Manali" className="about-img-2" loading="lazy" />
+            <img src="/images/SUR_0472.JPG" alt="Travel group photo" className="about-img-1" loading="lazy" />
+            <img src="/images/SUR_0469.JPG" alt="Mountain destination in Manali" className="about-img-2" loading="lazy" />
           </div>
         </div>
       </section>
