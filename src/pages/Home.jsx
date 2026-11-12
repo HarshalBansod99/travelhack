@@ -572,7 +572,7 @@ export default function Home() {
 
       {/* ===== CTA BANNER ===== */}
       <section className="cta-banner" id="cta-banner">
-        <div className="cta-banner__bg" style={{ backgroundImage: `url('/images/SUR_0275.JPG')` }} />
+        <div className="cta-banner__bg" style={{ backgroundImage: `url('https://images.unsplash.com/photo-1519681393784-d120267933ba?w=1600&q=80')` }} />
         <div className="cta-banner__overlay" />
         <div className="cta-banner__content container">
           <AnimatedSection>
