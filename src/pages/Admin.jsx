@@ -66,7 +66,12 @@ export default function Admin() {
 
     try {
       // 1. Try Supabase Auth (Official secure authentication)
-      const emailToTry = trimmedUser.includes('@') ? trimmedUser : `${trimmedUser}@travelhack.in`;
+      let emailToTry = trimmedUser;
+      if (emailToTry.endsWith('@gmail')) {
+        emailToTry = `${emailToTry}.com`;
+      } else if (!emailToTry.includes('@')) {
+        emailToTry = `${emailToTry}@travelhack.in`;
+      }
       
       const { data: authData, error: authError } = await supabase.auth.signInWithPassword({
         email: emailToTry,

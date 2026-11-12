@@ -536,7 +536,6 @@ export default function Home() {
                   </div>
                   <p className="testimonial-card__quote">"{t.quote}"</p>
                   <div className="testimonial-card__author">
-                    <img src={t.image} alt={t.name} loading="lazy" />
                     <div>
                       <strong>{t.name}</strong>
                       <span>{t.trip} · {t.city}</span>
